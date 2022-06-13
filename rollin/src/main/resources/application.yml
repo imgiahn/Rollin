@@ -1,0 +1,15 @@
+server:
+  port: 8090
+spring:
+  devtools:
+    livereload:
+      enabled: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/rollin?serverTimezone=UTC&amp;characterEncoding=UTF-8
+    username : root
+    password: hijacking1!
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+mybatis:
+  config-location: classpath:config/MyBatis.xml

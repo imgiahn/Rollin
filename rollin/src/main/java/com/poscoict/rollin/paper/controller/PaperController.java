@@ -14,11 +14,18 @@ public class PaperController {
     @Autowired
     PaperService paperService;
 
+    @Autowired
+    PaperDTO paperDTO;
     @GetMapping
     public List<PaperDTO> getAllPaper(){
         return paperService.getAllPaper();
     }
 
+    @GetMapping("/{id}")
+    public List<PaperDTO> getPaperById(@PathVariable String id) {
+        paperDTO.setUserId(Integer.valueOf(id));
+        return paperService.getPaperById(paperDTO);
+    }
     @PostMapping
     public Integer postPaper(@RequestBody PaperDTO paperDTO){
         return paperService.postPaper(paperDTO);

@@ -11,6 +11,11 @@
         FROM
             papers;
     </select>
+    <select id="getPaperById" resultType="PaperDTO">
+        SELECT userId, nickname, content, date, giftId
+        FROM papers
+        WHERE userId = #{userId};
+    </select>
     <insert id="postPaper" parameterType="PaperDTO">
         Insert Into
         papers(userId, nickname, content)

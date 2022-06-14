@@ -9,5 +9,6 @@ import java.util.List;
 public interface PaperMapper {
     List<PaperDTO> getAllPaper();
 
+    List<PaperDTO> getPaperById(PaperDTO paperDTO);
     Integer postPaper(PaperDTO paperDTO);
 }

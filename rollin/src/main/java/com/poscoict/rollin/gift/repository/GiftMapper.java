@@ -19,4 +19,15 @@ public interface GiftMapper {
     List<GiftDto> sortGiftByLowPrice();
 
     Integer viewCountById(GiftDto giftDto);
+import com.poscoict.rollin.paper.model.PaperDto;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface GiftMapper {
+
+    GiftDto getGiftById(Integer id);
+
+    Integer insertPaper(PaperDto paperDto);
+
+    Integer updateGiftCount(Integer id);
 }

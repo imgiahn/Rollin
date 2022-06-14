@@ -17,4 +17,4 @@ public class GiftDto {
     private String img;
     private int views;
 
-}
+};

@@ -8,13 +8,11 @@ import java.sql.Date;
 @Data
 @Component
 public class GiftDto {
-    private int id;
-    private int price;
+    private Integer id;
+    private Integer price;
     private String content;
-    private int count;
-    private Date date;
+    private Integer count;
     private String name;
     private String img;
-    private int views;
-
+    private Integer views;
 }

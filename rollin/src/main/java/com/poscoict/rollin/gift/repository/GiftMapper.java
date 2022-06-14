@@ -10,4 +10,6 @@ public interface GiftMapper {
     GiftDto getGiftById(Integer id);
 
     Integer insertPaper(PaperDto paperDto);
+
+    Integer updateGiftCount(Integer id);
 }

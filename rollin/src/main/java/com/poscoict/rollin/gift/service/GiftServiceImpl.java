@@ -21,4 +21,9 @@ public class GiftServiceImpl implements GiftService{
     public Integer insertPaper(PaperDto paperDto) {
         return giftMapper.insertPaper(paperDto);
     }
+
+    @Override
+    public Integer updateGiftCount(Integer id) {
+        return giftMapper.updateGiftCount(id);
+    }
 }

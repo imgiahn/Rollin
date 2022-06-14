@@ -19,4 +19,10 @@
             (#{userId}, #{nickname}, #{content}, #{giftId})
     </insert>
 
+    <update id="updateGiftCount" parameterType="Integer">
+        UPDATE gifts
+        SET count = count +1
+        WHERE id = #{id}
+    </update>
+
 </mapper>

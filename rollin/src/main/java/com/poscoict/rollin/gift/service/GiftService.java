@@ -11,4 +11,5 @@ public interface GiftService {
 
     Integer insertPaper(PaperDto paperDto);
 
+    Integer updateGiftCount(Integer id);
 }

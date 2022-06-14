@@ -15,6 +15,6 @@ public class GiftDto {
     private Date date;
     private String name;
     private String img;
-
+    private int views;
 
 }

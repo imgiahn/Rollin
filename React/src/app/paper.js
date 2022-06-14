@@ -29,7 +29,6 @@ const paperSlice = createSlice({
             state.isLoading = true;
         },
         load2: (state, action) => {
-            state.paperdata = action.payload;
             console.log(action.payload);
         },
         getPapersFail: (state, action) => {

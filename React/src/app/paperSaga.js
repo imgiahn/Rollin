@@ -6,8 +6,8 @@ function* postPaper(data) {
     try {
         console.log(data);
         console.log(data.payload);
-
         yield call(defaultAxios, '/paper', 'post', data.payload);
+        alert('작성이 완료되었습니다');
     } catch (error) {
         yield put(getPapersFail(error));
         console.error(error);
@@ -33,6 +33,7 @@ function* handleGetPaperById() {
         yield put(getPapersFail(error));
     }
 }
+
 export function* watchGetPaper() {
     yield yield takeLatest(load2, postPaper);
     yield yield takeLatest(load, handleGetPaperById);

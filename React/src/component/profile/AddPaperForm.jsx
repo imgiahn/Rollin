@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { third } from '../../app/page';
+import { load2 } from '../../app/paper';
 
 const AddPaperForm = () => {
     const dispatch = useDispatch();
@@ -13,6 +14,14 @@ const AddPaperForm = () => {
         } else if (form.content.value === '') {
             alert('내용을 입력해 주세요');
         } else {
+            console.log(seleteduser.uid, form.nickname.value, form.content.value);
+            dispatch(
+                load2({
+                    userId: seleteduser.uid,
+                    nickname: form.nickname.value,
+                    content: form.content.value,
+                })
+            );
             //paper추가 reducer 필요 (nickname + content)
             dispatch(third());
         }

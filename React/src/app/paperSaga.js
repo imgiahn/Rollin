@@ -1,6 +1,17 @@
-import { call, put, takeLatest, select } from "redux-saga/effects";
-import { getPapers, getPapersFail, load } from "./paper";
-import { defaultAxios } from "./AxiosApi";
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { getPapers, getPapersFail, load, load2 } from './paper';
+import { defaultAxios } from './AxiosApi';
+
+function* postPaper(data) {
+    try {
+        console.log(data);
+        console.log(data.payload);
+
+        yield call(defaultAxios, '/paper', 'post', data.payload);
+    } catch (error) {
+        yield put(getPapersFail(error));
+        console.error(error);
+    }
 
 function* handleGetAllPaper() {
   try {
@@ -10,6 +21,7 @@ function* handleGetAllPaper() {
     console.error(error);
     yield put(getPapersFail(error));
   }
+
 }
 function* handleGetPaperById() {
   try {
@@ -22,5 +34,6 @@ function* handleGetPaperById() {
   }
 }
 export function* watchGetPaper() {
-  yield takeLatest(load, handleGetPaperById);
+    yield yield takeLatest(load2, postPaper);
+    yield yield takeLatest(load, handleGetPaperById);
 }

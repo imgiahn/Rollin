@@ -22,5 +22,4 @@
         VALUES
         (#{userId},#{nickname},#{content})
     </insert>
-
 </mapper>

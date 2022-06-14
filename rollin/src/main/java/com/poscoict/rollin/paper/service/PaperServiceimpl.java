@@ -19,6 +19,11 @@ public class PaperServiceimpl implements PaperService{
     }
 
     @Override
+    public List<PaperDTO> getPaperById(PaperDTO paperDTO) {
+        return paperMapper.getPaperById(paperDTO);
+    }
+
+    @Override
     public Integer postPaper(PaperDTO paperDTO) {
         return paperMapper.postPaper(paperDTO);
     }

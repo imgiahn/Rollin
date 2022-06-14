@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface PaperMapper {
     List<PaperDTO> getAllPaper();
+
+    Integer postPaper(PaperDTO paperDTO);
 }

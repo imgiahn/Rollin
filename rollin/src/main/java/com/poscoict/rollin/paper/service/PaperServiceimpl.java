@@ -11,8 +11,15 @@ import java.util.List;
 public class PaperServiceimpl implements PaperService{
     @Autowired
     PaperMapper paperMapper;
+
+
     @Override
     public List<PaperDTO> getAllPaper() {
         return paperMapper.getAllPaper();
+    }
+
+    @Override
+    public Integer postPaper(PaperDTO paperDTO) {
+        return paperMapper.postPaper(paperDTO);
     }
 }

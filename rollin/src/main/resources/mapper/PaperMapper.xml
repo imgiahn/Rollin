@@ -11,4 +11,11 @@
         FROM
             papers;
     </select>
+    <insert id="postPaper" parameterType="PaperDTO">
+        Insert Into
+        papers(userId, nickname, content)
+        VALUES
+        (#{userId},#{nickname},#{content})
+    </insert>
+
 </mapper>

@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Users } from "../data/User";
-import { getGiftById,giftsApi } from "./GiftsApi";
-import { loginCheckApi } from "./usersApi";
+import { getGiftById, giftsApi } from "./giftsApi";
 const initialState = {
   allGifts: {},
   detailGift: {
@@ -27,7 +25,6 @@ export const selectAllgifts = createAsyncThunk(SELECT_ALL_GIFTS, async () => {
 });
 
 export const giftsSlice = createSlice({
-
   name: "gifts",
   initialState,
   reducers: {},
@@ -48,11 +45,7 @@ export const giftsSlice = createSlice({
         const newDetailGift = { ...state.detailGift };
         newDetailGift.message = error.message;
         return { ...state, detailGift: newDetailGift };
-      });
-  },
-});
-
-export default giftsSlice.reducer;
+      })
       .addCase(selectAllgifts.pending, (state, { payload }) => {
         const newGifts = { ...state.allGifts };
         newGifts.loading = true;
@@ -65,7 +58,7 @@ export default giftsSlice.reducer;
           newGifts.gifts = payload;
           return { ...state, allGifts: newGifts };
         } else {
-          newGifts.message = "선물이 없습니다";
+          newGifts.message = "상품이 없습니다.";
           return { ...state, allGifts: newGifts };
         }
       })
@@ -77,4 +70,5 @@ export default giftsSlice.reducer;
       });
   },
 });
-export default usersSlice.reducer;
+
+export default giftsSlice.reducer;

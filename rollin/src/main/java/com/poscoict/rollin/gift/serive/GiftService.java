@@ -1,6 +1,7 @@
 package com.poscoict.rollin.gift.serive;
 
 import com.poscoict.rollin.gift.model.GiftDto;
+import com.poscoict.rollin.paper.model.PaperDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,12 @@ public interface GiftService {
     List<GiftDto> findSortGiftByLowPrice();
 
     Integer viewCount(GiftDto giftDto);
+
+    GiftDto getGiftById(Integer id);
+
+    Integer insertPaper(PaperDto paperDto);
+
+    Integer updateGiftCount(Integer id);
 
 
 

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react";
 import { selectAllgifts } from "../../app/gifts";
-import { IMG_PATH } from "../../http/CustomAxios";
+import { IMG_PATH } from "../../http/giftAxios";
 
 const Gifts=()=>{
     const allGifts=useSelector((state)=>state.gifts.allGifts);

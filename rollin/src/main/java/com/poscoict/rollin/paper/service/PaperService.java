@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface PaperService {
     List<PaperDTO> getAllPaper();
+
+    Integer postPaper(PaperDTO paperDTO);
 }

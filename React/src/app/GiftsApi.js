@@ -1,3 +1,9 @@
+
+import axios from "axios";
+
+export const getGiftById = async (id) => {
+  try {
+    return await axios(`/${id}`, "get");
 import { customAxios } from "../http/CustomAxios";
 export const giftsApi = async () => {
   try {

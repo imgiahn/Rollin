@@ -5,6 +5,7 @@ import pageReducer from "./page";
 import paperReducer from "./paper";
 import gifts from "./gifts";
 import { watchGetGifts } from "./giftSaga";
+import { watchGetPaper } from "./paperSaga";
 import { all } from "redux-saga/effects";
 const reducer = combineReducers({
   user: userReducer,
@@ -15,7 +16,7 @@ const reducer = combineReducers({
 });
 const sagaMiddleware = createSagaMiddleware();
 function* rootSaga() {
-  yield all([watchGetGifts()]);
+  yield all([watchGetPaper(), watchGetGifts]);
 }
 // export const store = configureStore({
 //   reducer,

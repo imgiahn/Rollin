@@ -88,17 +88,6 @@ export const giftsSlice = createSlice({
           return { ...state, receiversInfo: newReceiversInfo };
         }
       })
-
-      .addCase(selectReceivers.fulfilled, (state, { payload }) => {
-        const newReceiversInfo = { ...state.receiversInfo };
-        if (payload) {
-          newReceiversInfo.receivers = payload;
-          return { ...state, receiversInfo: newReceiversInfo };
-        } else {
-          newReceiversInfo.message = "받을 수 있는 사람이 없습니다";
-          return { ...state, receiversInfo: newReceiversInfo };
-        }
-      })
       .addCase(selectReceivers.rejected, (state, { error }) => {
         const newReceiversInfo = { ...state.receiversInfo };
         newReceiversInfo.message = error.message;

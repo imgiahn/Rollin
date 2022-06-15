@@ -2,8 +2,8 @@ package com.poscoict.rollin.gift.serive;
 
 import com.poscoict.rollin.gift.model.GiftDto;
 import com.poscoict.rollin.gift.repository.GiftMapper;
-import com.poscoict.rollin.paper.model.PaperDto;
-import com.poscoict.rollin.user.model.UserDto;
+import com.poscoict.rollin.paper.model.PaperDTO;
+import com.poscoict.rollin.user.model.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +55,7 @@ public class GiftServiceImpl implements GiftService {
     }
 
     @Override
-    public Integer insertGift(PaperDto paperDto) {
+    public Integer insertGift(PaperDTO paperDto) {
         return giftMapper.insertGift(paperDto);
     }
 
@@ -65,7 +65,7 @@ public class GiftServiceImpl implements GiftService {
     }
 
     @Override
-    public List<UserDto> findReceiverNotUserId(Integer id) {
+    public List<UserDTO> findReceiverNotUserId(Integer id) {
         return giftMapper.findReceiverNotUserId(id);
     }
 }

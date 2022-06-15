@@ -2,8 +2,8 @@ package com.poscoict.rollin.gift.controller;
 
 import com.poscoict.rollin.gift.model.GiftDto;
 import com.poscoict.rollin.gift.serive.GiftServiceImpl;
-import com.poscoict.rollin.paper.model.PaperDto;
-import com.poscoict.rollin.user.model.UserDto;
+import com.poscoict.rollin.paper.model.PaperDTO;
+import com.poscoict.rollin.user.model.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,10 +22,10 @@ public class GiftController {
     GiftDto giftDto;
 
     @Autowired
-    PaperDto paperDto;
+    PaperDTO paperDto;
 
     @Autowired
-    UserDto userDto;
+    UserDTO userDto;
 
     @GetMapping("/")
     public List<GiftDto> getAllGift(){
@@ -75,7 +75,7 @@ public class GiftController {
     // insertGift(papaer에 등록)
     // => 프론트에서  userId, nickname, content (Body에), giftId 받아와서 등록하기
     @PostMapping("")
-    public ResponseEntity<?> postGift(@RequestBody PaperDto paperDto){
+    public ResponseEntity<?> postGift(@RequestBody PaperDTO paperDto){
         log.info(paperDto.toString());
         HttpStatus httpStatus;
         if(giftService.insertGift(paperDto)==1){
@@ -89,7 +89,7 @@ public class GiftController {
     }
 
     @GetMapping("/receiver/{id}")
-    public List<UserDto> getReceiverNotUserId(@PathVariable String id){
+    public List<UserDTO> getReceiverNotUserId(@PathVariable String id){
         return giftService.findReceiverNotUserId(Integer.valueOf(id));
     }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { third } from "../../app/page";
-import { select } from "../../app/paper";
+import { getSeletedUsersPapers, select } from "../../app/paper";
 import { useDispatch, useSelector } from "react-redux";
 import { load } from "../../app/gifts";
 const UserList = () => {

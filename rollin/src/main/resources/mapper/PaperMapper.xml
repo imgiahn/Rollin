@@ -12,7 +12,7 @@
             papers;
     </select>
     <select id="getPaperById" resultType="PaperDTO">
-        SELECT userId, nickname, content, date, giftId
+        SELECT id, userId, nickname, content, date, giftId
         FROM papers
         WHERE userId = #{userId};
     </select>

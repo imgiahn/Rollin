@@ -46,6 +46,43 @@ const paperSlice = createSlice({
             state.error = payload;
         },
     },
+<<<<<<< HEAD
+=======
+    selectPaper: (state, { payload }) => {
+      console.log(payload);
+      state.selectedPaper = payload;
+    },
+    getPapers: (state, { payload }) => {
+      // console.log(payload);
+      state.paper = payload;
+    },
+    load: (state) => {
+      state.isLoading = true;
+    },
+    load2: (state, action) => {
+      //   state.paperdata = action.payload;
+      console.log(action.payload);
+    },
+    getPapersFail: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    requestGetGift: (state, action) => {
+      console.log("requestGetGift");
+    },
+    getGiftById: (state, { payload }) => {
+      state.selectedPaper = { ...state.selectedPaper, gift: payload };
+    },
+    getGiftByIdFails: (state, { payload }) => {
+      state.error = payload;
+    },
+    // getSeletedUserPapers: (state, action) => {
+    //   const response = defaultAxios(`/paper/${action.payload.id}`, "get", null);
+    //   console.log(response);
+    //   state.paper = response;
+    // },
+  },
+>>>>>>> 67c3efd (debug paging)
 });
 export const {
     select,

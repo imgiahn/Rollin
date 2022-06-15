@@ -16,4 +16,6 @@ public interface UserService {
     Integer idCheck(UserDto userDto);
 
     List<UserDto> LoginCheck(UserDto userDto);
+
+    List<UserDto> getUserById(UserDto userDto);
 }

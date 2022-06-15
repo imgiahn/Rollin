@@ -31,7 +31,14 @@
         WHERE
             userId = #{userId}
     </select>
-
+    <select id="getUserById" parameterType="UserDto" resultType="UserDto">
+        SELECT
+            userId,name,img,pcnt
+        FROM
+            users
+        WHERE
+            id = #{id}
+    </select>
     <select id="LoginCheck" resultType="UserDto" parameterType="UserDto">
         SELECT
         id, userId, name

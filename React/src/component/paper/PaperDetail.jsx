@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fourth } from "../../app/page";
 import Modal from "react-modal";
-const ProfileDetail = () => {
+const PaperDetail = ({ setIsSelect }) => {
   const dispatch = useDispatch();
   const selectedPaper = useSelector((state) => state.paper.selectedPaper);
   const checkGift = useSelector((state) => state.paper.selectedPaper.giftId);
@@ -33,7 +33,7 @@ const ProfileDetail = () => {
           </button>
         ) : null}
 
-        <button className="btn btn-outline-primary" onClick={() => dispatch(fourth())}>
+        <button className="btn btn-outline-primary" onClick={() => setIsSelect(false)}>
           목록으로
         </button>
       </div>
@@ -70,4 +70,4 @@ const ProfileDetail = () => {
   );
 };
 
-export default ProfileDetail;
+export default PaperDetail;

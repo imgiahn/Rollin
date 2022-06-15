@@ -1,13 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { call } from 'redux-saga/effects';
-import { Users } from '../data/User';
-import { defaultAxios } from './AxiosApi';
+import { createSlice } from "@reduxjs/toolkit";
+import { Users } from "../data/User";
+import { defaultAxios } from "./AxiosApi";
 const initialState = {
-    users: Users,
-    isLogin: false,
-    check: 0,
-    login: {},
-    me: { uid: 1, name: 'seo', id: 'seo', img: '/img/profile/2.jpeg', password: '1234' },
+  users: Users,
+  isLogin: false,
+  check: 0,
+  me: {},
 };
 // const GETUSERS = "GETUSERS";
 // const SELECT_USER_BY_ID = "SELECT_USER_BY_ID";
@@ -17,38 +15,44 @@ const initialState = {
 // const LOGIN = "LOGIN";
 
 const userSlice = createSlice({
-    name: 'users',
-    initialState,
-    reducers: {
-        login: (state, action) => {
-            state.isLogin = true;
-        },
-        load3: (state, action) => {
-            console.log(action.payload);
-        },
-        load4: (state, action) => {
-            console.log(action.payload);
-        },
-        load7: (state, action) => {
-            console.log(action.payload);
-        },
-        load5: (state, action) => {
-            state.check = action.payload;
-        },
-        load6: (state, action) => {
-            state.login = action.payload;
-        },
-        fistload: (state, action) => {
-            state.check = 0;
-        },
-        // getUsers: (state, action) => {
-        //   state.value = action.payload;
-        // },
-        // selectUserById: (state, action) => {
-        //   state.value = action.payload;
-        // },
+  name: "users",
+  initialState,
+  reducers: {
+    login: (state, action) => {
+      state.isLogin = action.payload;
     },
-    extraReducers: {},
+    load3: (state, action) => {
+      console.log(action.payload);
+    },
+    load4: (state, action) => {
+      console.log(action.payload);
+    },
+    load7: (state, action) => {
+      console.log(action.payload);
+    },
+    load5: (state, action) => {
+      state.check = action.payload;
+    },
+    getUsers: (state, { payload }) => {
+      state.users = payload;
+    },
+    getUserById: (state, action) => {
+      state.me = action.payload;
+    },
+    fistload: (state, action) => {
+      state.check = 0;
+    },
+    checkLogin: (state, action) => {
+      console.log("check login...");
+    },
+    // getUsers: (state, action) => {
+    //   state.value = action.payload;
+    // },
+    // selectUserById: (state, action) => {
+    //   state.value = action.payload;
+    // },
+  },
+  extraReducers: {},
 });
-export const { login, getUsers, selectUserById, load3, load4, load5, load6, load7, fistload } = userSlice.actions;
+export const { login, getUsers, selectUserById, load3, load4, load5, getUserById, load7, fistload, checkLogin } = userSlice.actions;
 export default userSlice.reducer;

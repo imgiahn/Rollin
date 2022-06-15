@@ -33,5 +33,10 @@ public class UserServiceimpl implements UserService {
         return userMapper.LoginCheck(userDto);
     }
 
+    @Override
+    public List<UserDto> getUserById(UserDto userDto) {
+        return userMapper.getUserById(userDto);
+    }
+
 
 }

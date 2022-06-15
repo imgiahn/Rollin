@@ -15,11 +15,17 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UserDto userDto;
     @GetMapping
     public List<UserDto> getUser() {
         return userService.getAllUser();
     }
-
+    @GetMapping("/{id}")
+    public List<UserDto> getUserById(@PathVariable String id){
+        userDto.setId(Integer.valueOf(id));
+        return userService.getUserById(userDto);
+    }
     @PostMapping
     public Integer insert(@RequestBody UserDto userDTO){
         return userService.insertUser(userDTO);

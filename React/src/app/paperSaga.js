@@ -26,7 +26,7 @@ function* handleGetAllPaper() {
 function* handleGetPaperById() {
   try {
     console.log("handle start");
-    const id = yield select((state) => state.user.me.uid);
+    const id = yield select((state) => state.user.me.id);
 
     const paper = yield call(defaultAxios, `/paper/${id}`, "get", null);
     yield put(getPapers(paper.data));

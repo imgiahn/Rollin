@@ -1,13 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Front from "./component/front/Front";
-import Main from "./component/main/Main";
-import ProfileMain from "./component/profile/ProfileMain";
+// import Main from "./component/main/Main";
+// import ProfileMain from "./component/profile/ProfileMain";
 import UserList from "./component/main/UserList";
-import PaperDetail from "./component/profile/PaperDetail";
-import PapersList from "./component/profile/PaperList";
+import PaperMain from "./component/paper/PaperMain";
+import SendBody from "./component/profile/SendBody";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import AuthRouter from "./component/AuthRouter";
 function App() {
   const page = useSelector((state) => state.page);
   return (
@@ -15,9 +16,26 @@ function App() {
       <header className="App-header"></header>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={page.first ? <Main /> : <Front />}></Route>
-          <Route path="/profile" element={page.third ? <ProfileMain /> : <UserList />}></Route>
-          <Route path="/paper" elemnt={page.fourth ? <PaperDetail /> : <PapersList />}></Route>
+          <Route
+            path="/"
+            element={
+              <>
+                <AuthRouter />
+                <Front />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/paper"
+            element={
+              <>
+                <AuthRouter />
+                <PaperMain />
+              </>
+            }
+          ></Route>
+          <Route path="/profile" element={<UserList />}></Route>
+          <Route path="/add" element={<SendBody />}></Route>
         </Routes>
       </BrowserRouter>
       {/* {page.first ? <Main /> : <Front />} */}

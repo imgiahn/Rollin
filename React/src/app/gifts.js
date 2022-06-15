@@ -1,12 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {
-  getGiftById,
-  getReceiverNamesNotUserId,
-  giftsApi,
-  postGift,
-} from "./GiftsApi";
+import { getGiftById, getReceiverNamesNotUserId, giftsApi, postGift } from "./GiftsApi";
 const initialState = {
-  allGifts: {},
+  allGifts: [],
   detailGift: {
     gift: {},
     message: "",
@@ -23,22 +18,16 @@ const SELECT_ALL_GIFTS = "SELECT_ALL_GIFTS";
 const SELECT_RECEIVERS_BY_KEY = "SELECT_RECEIVER_NAMES_BY_KEY";
 const INSERT_GIFT = "INSERT_GIFT";
 
-export const selectGiftByKey = createAsyncThunk(
-  SELECT_GIFT_BY_KEY,
-  async (payload) => {
-    const gift = await getGiftById(Number(1));
-    return gift;
-  }
-);
+export const selectGiftByKey = createAsyncThunk(SELECT_GIFT_BY_KEY, async (payload) => {
+  const gift = await getGiftById(Number(1));
+  return gift;
+});
 
 // 로그인한 user id가 아닌 사람들 name 가져오기
-export const selectReceivers = createAsyncThunk(
-  SELECT_RECEIVERS_BY_KEY,
-  async (payload) => {
-    const receivers = await getReceiverNamesNotUserId(Number(1));
-    return receivers;
-  }
-);
+export const selectReceivers = createAsyncThunk(SELECT_RECEIVERS_BY_KEY, async (payload) => {
+  const receivers = await getReceiverNamesNotUserId(Number(1));
+  return receivers;
+});
 
 export const selectAllgifts = createAsyncThunk(SELECT_ALL_GIFTS, async () => {
   return await giftsApi();
@@ -63,7 +52,15 @@ export const insertGift = createAsyncThunk(INSERT_GIFT, async (payload) => {
 export const giftsSlice = createSlice({
   name: "gifts",
   initialState,
-  reducers: {},
+  reducers: {
+    selectAllGifts: (state, { payload }) => {
+      console.log(payload);
+      state.allGifts = payload;
+    },
+    load: (state) => {
+      state.isLoading = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(selectGiftByKey.fulfilled, (state, { payload }) => {
@@ -81,28 +78,17 @@ export const giftsSlice = createSlice({
         newDetailGift.message = error.message;
         return { ...state, detailGift: newDetailGift };
       })
-      .addCase(selectAllgifts.pending, (state, { payload }) => {
-        const newGifts = { ...state.allGifts };
-        newGifts.loading = true;
-        return { ...state, allGifts: newGifts };
-      })
-      .addCase(selectAllgifts.fulfilled, (state, { payload }) => {
-        const newGifts = { ...state.allGifts };
-        newGifts.loading = true;
+      .addCase(selectReceivers.fulfilled, (state, { payload }) => {
+        const newReceiversInfo = { ...state.receiversInfo };
         if (payload) {
-          newGifts.gifts = payload;
-          return { ...state, allGifts: newGifts };
+          newReceiversInfo.receivers = payload;
+          return { ...state, receiversInfo: newReceiversInfo };
         } else {
-          newGifts.message = "상품이 없습니다.";
-          return { ...state, allGifts: newGifts };
+          newReceiversInfo.message = "받을 수 있는 사람이 없습니다";
+          return { ...state, receiversInfo: newReceiversInfo };
         }
       })
-      .addCase(selectAllgifts.rejected, (state, { error }) => {
-        const newGifts = { ...state.allGifts };
-        newGifts.loading = false;
-        newGifts.message = error.message;
-        return { ...state, allGifts: newGifts };
-      })
+
       .addCase(selectReceivers.fulfilled, (state, { payload }) => {
         const newReceiversInfo = { ...state.receiversInfo };
         if (payload) {
@@ -127,4 +113,5 @@ export const giftsSlice = createSlice({
   },
 });
 
+export const { selectAllGifts, load } = giftsSlice.actions;
 export default giftsSlice.reducer;

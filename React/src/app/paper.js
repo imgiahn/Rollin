@@ -22,7 +22,7 @@ const paperSlice = createSlice({
       state.selectedPaper = payload;
     },
     getPapers: (state, { payload }) => {
-      console.log(payload);
+      // console.log(payload);
       state.paper = payload;
     },
     load: (state) => {

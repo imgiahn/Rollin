@@ -5,6 +5,6 @@ import PaperDetail from "./PaperDetail";
 import SendBody from "./SendBody";
 const ProfileBody = () => {
   const page = useSelector((state) => state.page);
-  return page.fourth ? <PaperDetail /> : <SendBody />;
+  return page.fourth ? <PaperDetail /> : <PapersList />;
 };
 export default ProfileBody;

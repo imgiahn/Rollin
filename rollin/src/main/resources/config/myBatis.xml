@@ -5,8 +5,12 @@
 <configuration>
     <typeAliases>
         <package name="com.poscoict.rollin.paper.model"/>
+        <package name="com.poscoict.rollin.user.model"/>
+
     </typeAliases>
     <mappers>
         <mapper resource="mapper/PaperMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
+
     </mappers>
 </configuration>

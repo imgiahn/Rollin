@@ -11,11 +11,12 @@ const initialState = {
 };
 
 const paperSlice = createSlice({
-  name: "papers",
-  initialState,
-  reducers: {
-    select: (state, action) => {
-      state.selectedUser = action.payload;
+    name: 'papers',
+    initialState,
+    reducers: {
+        select: (state, action) => {
+            state.selectedUser = action.payload;
+        },
     },
     selectPaper: (state, { payload }) => {
       console.log(payload);

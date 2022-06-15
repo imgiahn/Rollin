@@ -3,15 +3,17 @@ import { selectPaper, getPapers, getPapersFail, load, load2, requestGetGift, get
 import { defaultAxios } from "./AxiosApi";
 
 function* postPaper(data) {
-  try {
-    console.log(data);
-    console.log(data.payload);
 
-    yield call(defaultAxios, "/paper", "post", data.payload);
-  } catch (error) {
-    yield put(getPapersFail(error));
-    console.error(error);
-  }
+    try {
+        console.log(data);
+        console.log(data.payload);
+        yield call(defaultAxios, '/paper', 'post', data.payload);
+        alert('작성이 완료되었습니다');
+    } catch (error) {
+        yield put(getPapersFail(error));
+        console.error(error);
+    }
+
 }
 
 function* handleGetAllPaper() {
@@ -58,6 +60,7 @@ function* handleGetGiftById(data) {
     yield put(getGiftByIdFails(error));
   }
 }
+
 export function* watchGetPaper() {
   yield yield takeLatest(load2, postPaper);
   yield yield takeLatest(load, handleGetPaperById);

@@ -18,10 +18,11 @@ const GiftDetail = () => {
 
   const onSubmit = () => {
     dispatch(insertGift(form));
+    console.log("submit:", form);
   };
 
   const [form, setForm] = useState({
-    receiverId: undefined,
+    receiverId: 0,
     content: "",
   });
 
@@ -64,6 +65,7 @@ const GiftDetail = () => {
           id="receiverSelect"
           onChange={(e) => onChangeSelect(e)}
         >
+          <option value="">받는 사람</option>
           {receiversInfo.receivers?.map((receiver, index) => (
             <option value={receiver.id}>{receiver.name}</option>
           ))}

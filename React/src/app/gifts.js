@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getGiftById, giftsApi } from "./giftsApi";
+import { getGiftById, giftsApi } from "./GiftsApi";
 const initialState = {
-  allGifts: {},
+  allGifts: [],
   detailGift: {
     gift: {},
     message: "",
@@ -10,7 +10,7 @@ const initialState = {
 
 // action 타입
 const SELECT_GIFT_BY_KEY = "SELECT_GIFT_BY_KEY";
-const SELECT_ALL_GIFTS = "SELECT_ALL_GIFTS";
+// const SELECT_ALL_GIFTS = "SELECT_ALL_GIFTS";
 
 export const selectGiftByKey = createAsyncThunk(
   SELECT_GIFT_BY_KEY,
@@ -20,14 +20,22 @@ export const selectGiftByKey = createAsyncThunk(
   }
 );
 
-export const selectAllgifts = createAsyncThunk(SELECT_ALL_GIFTS, async () => {
-  return await giftsApi();
-});
+// export const selectAllgifts = createAsyncThunk(SELECT_ALL_GIFTS, async () => {
+//   return await giftsApi();
+// });
 
 export const giftsSlice = createSlice({
   name: "gifts",
   initialState,
-  reducers: {},
+  reducers: {
+    selectAllGifts: (state, { payload }) => {
+      console.log(payload);
+      state.allGifts = payload;
+    },
+    load: (state) => {
+      state.isLoading = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
 
@@ -45,30 +53,9 @@ export const giftsSlice = createSlice({
         const newDetailGift = { ...state.detailGift };
         newDetailGift.message = error.message;
         return { ...state, detailGift: newDetailGift };
-      })
-      .addCase(selectAllgifts.pending, (state, { payload }) => {
-        const newGifts = { ...state.allGifts };
-        newGifts.loading = true;
-        return { ...state, allGifts: newGifts };
-      })
-      .addCase(selectAllgifts.fulfilled, (state, { payload }) => {
-        const newGifts = { ...state.allGifts };
-        newGifts.loading = true;
-        if (payload) {
-          newGifts.gifts = payload;
-          return { ...state, allGifts: newGifts };
-        } else {
-          newGifts.message = "상품이 없습니다.";
-          return { ...state, allGifts: newGifts };
-        }
-      })
-      .addCase(selectAllgifts.rejected, (state, { error }) => {
-        const newGifts = { ...state.allGifts };
-        newGifts.loading = false;
-        newGifts.message = error.message;
-        return { ...state, allGifts: newGifts };
       });
   },
 });
 
+export const { selectAllGifts, load } = giftsSlice.actions;
 export default giftsSlice.reducer;

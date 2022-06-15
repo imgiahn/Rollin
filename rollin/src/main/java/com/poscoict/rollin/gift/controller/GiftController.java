@@ -3,6 +3,7 @@ package com.poscoict.rollin.gift.controller;
 import com.poscoict.rollin.gift.model.GiftDto;
 import com.poscoict.rollin.gift.serive.GiftServiceImpl;
 import com.poscoict.rollin.paper.model.PaperDto;
+import com.poscoict.rollin.user.model.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,12 +24,15 @@ public class GiftController {
     @Autowired
     PaperDto paperDto;
 
+    @Autowired
+    UserDto userDto;
+
     @GetMapping("/")
     public List<GiftDto> getAllGift(){
         return giftService.findAllGift();
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/search/{name}")
     public List<GiftDto> getGiftByName(@PathVariable String name){
         log.info(name);
         giftDto.setName(name);
@@ -72,9 +76,9 @@ public class GiftController {
     // => 프론트에서  userId, nickname, content (Body에), giftId 받아와서 등록하기
     @PostMapping("")
     public ResponseEntity<?> postGift(@RequestBody PaperDto paperDto){
-
+        log.info(paperDto.toString());
         HttpStatus httpStatus;
-        if(giftService.insertPaper(paperDto)==1){
+        if(giftService.insertGift(paperDto)==1){
             httpStatus = giftService.updateGiftCount(paperDto.getGiftId())==1
                     ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
         }else{
@@ -82,5 +86,10 @@ public class GiftController {
         }
 
         return new ResponseEntity<>(httpStatus);
+    }
+
+    @GetMapping("/receiver/{id}")
+    public List<UserDto> getReceiverNotUserId(@PathVariable String id){
+        return giftService.findReceiverNotUserId(Integer.valueOf(id));
     }
 }

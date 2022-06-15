@@ -70,8 +70,8 @@ const paperSlice = createSlice({
     requestGetGift: (state, action) => {
       console.log("requestGetGift");
     },
-    getGiftById: (state, { payload }) => {
-      state.selectedPaper = { ...state.selectedPaper, gift: payload };
+    getGiftFromId: (state, action) => {
+      state.selectedPaper = { ...state.selectedPaper, gift: action.payload };
     },
     getGiftByIdFails: (state, { payload }) => {
       state.error = payload;
@@ -84,6 +84,7 @@ const paperSlice = createSlice({
   },
 >>>>>>> 67c3efd (debug paging)
 });
+<<<<<<< HEAD
 export const {
     select,
     selectPaper,
@@ -96,4 +97,8 @@ export const {
     getGiftByIdFails,
     requestGetGift,
 } = paperSlice.actions;
+=======
+export const { select, selectPaper, getPapers, getPapersFail, getSeletedUsersPapers, load, load2, getGiftFromId, getGiftByIdFails, requestGetGift } =
+  paperSlice.actions;
+>>>>>>> fd3cfa8 (선택된 Paper의 gift 호출)
 export default paperSlice.reducer;

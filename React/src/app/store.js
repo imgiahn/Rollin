@@ -16,7 +16,11 @@ const reducer = combineReducers({
 });
 const sagaMiddleware = createSagaMiddleware();
 function* rootSaga() {
+<<<<<<< HEAD
     yield all([watchGetPaper(), watchGetGifts(), watchGetUser()]);
+=======
+  yield all([watchGetPaper(), watchGetGifts()]);
+>>>>>>> fd3cfa8 (선택된 Paper의 gift 호출)
 }
 // export const store = configureStore({
 //   reducer,

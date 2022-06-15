@@ -2,8 +2,7 @@ package com.poscoict.rollin.gift.repository;
 
 import com.poscoict.rollin.gift.model.GiftDto;
 
-import com.poscoict.rollin.paper.model.PaperDTO;
-import com.poscoict.rollin.user.model.UserDTO;
+import com.poscoict.rollin.paper.model.PaperDto;
 import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -25,9 +24,9 @@ public interface GiftMapper {
 
     GiftDto getGiftById(Integer id);
 
-    Integer insertGift(PaperDTO paperDto);
+    Integer insertGift(PaperDto paperDto);
 
     Integer updateGiftCount(Integer id);
 
-    List<UserDTO> findReceiverNotUserId(Integer id);
+    List<PaperDto> findReceiverNotUserId(Integer id);
 }

@@ -1,8 +1,7 @@
 package com.poscoict.rollin.gift.serive;
 
 import com.poscoict.rollin.gift.model.GiftDto;
-import com.poscoict.rollin.paper.model.PaperDTO;
-import com.poscoict.rollin.user.model.UserDTO;
+import com.poscoict.rollin.paper.model.PaperDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,10 +22,10 @@ public interface GiftService {
 
     GiftDto getGiftById(Integer id);
 
-    Integer insertGift(PaperDTO paperDto);
+    Integer insertGift(PaperDto paperDto);
 
     Integer updateGiftCount(Integer id);
 
-    List<UserDTO> findReceiverNotUserId(Integer id);
+    List<PaperDto> findReceiverNotUserId(Integer id);
 
 }

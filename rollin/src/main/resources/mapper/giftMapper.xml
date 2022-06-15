@@ -69,7 +69,7 @@
         WHERE id=#{id}
     </select>
 
-    <insert id="insertGift" parameterType="PaperDTO">
+    <insert id="insertGift" parameterType="PaperDto">
         INSERT INTO
             papers(userId, nickname, content, giftId)
         VALUES

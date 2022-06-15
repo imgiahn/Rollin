@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 @Component
-public class PaperDTO {
+public class PaperDto {
     private int id;
     private int userId;
     private String nickname;

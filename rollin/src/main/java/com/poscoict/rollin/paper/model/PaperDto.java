@@ -3,7 +3,7 @@ package com.poscoict.rollin.paper.model;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @Component
@@ -14,5 +14,4 @@ public class PaperDto {
     private String content;
     private Date date;
     private int giftId;
-
 }

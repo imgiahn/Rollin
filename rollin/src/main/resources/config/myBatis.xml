@@ -10,5 +10,7 @@
     </typeAliases>
     <mappers>
         <mapper resource="mapper/giftMapper.xml"/>
+        <mapper resource="mapper/PaperMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
     </mappers>
 </configuration>

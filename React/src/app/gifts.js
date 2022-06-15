@@ -91,7 +91,6 @@ export const giftsSlice = createSlice({
         newDetailGift.message = error.message;
         return { ...state, detailGift: newDetailGift };
       })
-
       .addCase(selectReceivers.fulfilled, (state, { payload }) => {
         const newReceiversInfo = { ...state.receiversInfo };
         if (payload) {

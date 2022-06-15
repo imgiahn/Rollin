@@ -22,4 +22,16 @@ public class UserServiceimpl implements UserService {
     public Integer insertUser(UserDto userDTO) {
         return userMapper.insertUser(userDTO);
     }
+
+    @Override
+    public Integer idCheck(UserDto userDto) {
+        return userMapper.idCheck(userDto);
+    }
+
+    @Override
+    public List<UserDto> LoginCheck(UserDto userDto) {
+        return userMapper.LoginCheck(userDto);
+    }
+
+
 }

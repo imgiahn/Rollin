@@ -6,6 +6,7 @@
     <typeAliases>
         <package name="com.poscoict.rollin.gift.model"/>
         <package name="com.poscoict.rollin.paper.model"/>
+        <package name="com.poscoict.rollin.user.model"/>
     </typeAliases>
     <mappers>
         <mapper resource="mapper/giftMapper.xml"/>

@@ -69,7 +69,7 @@
         WHERE id=#{id}
     </select>
 
-    <insert id="insertPaper" parameterType="PaperDto">
+    <insert id="insertGift" parameterType="PaperDto">
         INSERT INTO
             papers(userId, nickname, content, giftId)
         VALUES
@@ -81,5 +81,13 @@
         SET count = count +1
         WHERE id = #{id}
     </update>
+
+    <select id="findReceiverNotUserId" parameterType="Integer" resultType="UserDto">
+        SELECT
+            id, name
+        FROM
+            users
+        WHERE id != #{id}
+    </select>
 
 </mapper>

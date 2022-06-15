@@ -12,4 +12,8 @@ public interface UserService {
     List<UserDto> getAllUser();
 
     Integer insertUser(UserDto userDTO);
+
+    Integer idCheck(UserDto userDto);
+
+    List<UserDto> LoginCheck(UserDto userDto);
 }

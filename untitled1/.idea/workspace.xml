@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ce801afa-1caf-49cc-b3d8-a6cabec5d0c7" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/../React/src/app/AxiosApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/src/app/AxiosApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/src/app/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/src/app/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/src/app/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/src/app/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/src/component/front/Join.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../React/src/component/front/Join.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/paper/service/PaperServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/paper/service/PaperServiceimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/user/model/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/user/model/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/user/repo/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/user/repo/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/user/service/UserServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../rollin/src/main/java/com/poscoict/rollin/user/service/UserServiceimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rollin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../rollin/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rollin/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../rollin/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2AbdYGSguizbHCYqMrGpz7LqdOk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="ce801afa-1caf-49cc-b3d8-a6cabec5d0c7" name="변경" comment="" />
+      <created>1655282265114</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655282265114</updated>
+    </task>
+    <servers />
+  </component>
+</project>

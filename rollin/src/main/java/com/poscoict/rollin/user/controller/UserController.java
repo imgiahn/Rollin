@@ -25,4 +25,15 @@ public class UserController {
         return userService.insertUser(userDTO);
     }
 
+    @PostMapping("/Id")
+    public Integer idCheck(@RequestBody UserDto userDto){
+
+
+        return userService.idCheck(userDto);
+    }
+
+    @PostMapping("/Login")
+    public List<UserDto> LoginCheck(@RequestBody  UserDto userDto){
+        return userService.LoginCheck(userDto);
+    }
 }

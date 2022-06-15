@@ -16,7 +16,7 @@ const reducer = combineReducers({
 });
 const sagaMiddleware = createSagaMiddleware();
 function* rootSaga() {
-  yield all([watchGetPaper(), watchGetGifts]);
+  yield all([watchGetPaper(), watchGetGifts()]);
 }
 // export const store = configureStore({
 //   reducer,

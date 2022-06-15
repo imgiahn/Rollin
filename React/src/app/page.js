@@ -4,6 +4,7 @@ const initialState = {
   second: false,
   third: false,
   fourth: false,
+  fifth: "",
 };
 
 const pageSlice = createSlice({
@@ -22,7 +23,11 @@ const pageSlice = createSlice({
     fourth: (state, action) => {
       state.fourth = !state.fourth;
     },
+    fifth: (state, action) => {
+      console.log(action.payload);
+      state.fifth = action.payload;
+    },
   },
 });
-export const { first, second, third, fourth } = pageSlice.actions;
+export const { first, second, third, fourth, fifth } = pageSlice.actions;
 export default pageSlice.reducer;

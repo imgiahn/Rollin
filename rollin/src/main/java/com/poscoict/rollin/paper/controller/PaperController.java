@@ -1,6 +1,6 @@
 package com.poscoict.rollin.paper.controller;
 
-import com.poscoict.rollin.paper.model.PaperDTO;
+import com.poscoict.rollin.paper.model.PaperDto;
 import com.poscoict.rollin.paper.service.PaperService;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +15,19 @@ public class PaperController {
     PaperService paperService;
 
     @Autowired
-    PaperDTO paperDTO;
+    PaperDto paperDTO;
     @GetMapping
-    public List<PaperDTO> getAllPaper(){
+    public List<PaperDto> getAllPaper(){
         return paperService.getAllPaper();
     }
 
     @GetMapping("/{id}")
-    public List<PaperDTO> getPaperById(@PathVariable String id) {
+    public List<PaperDto> getPaperById(@PathVariable String id) {
         paperDTO.setUserId(Integer.valueOf(id));
         return paperService.getPaperById(paperDTO);
     }
     @PostMapping
-    public Integer postPaper(@RequestBody PaperDTO paperDTO){
+    public Integer postPaper(@RequestBody PaperDto paperDTO){
         return paperService.postPaper(paperDTO);
     }
 }

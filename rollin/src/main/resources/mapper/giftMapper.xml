@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poscoict.rollin.gift.repository.GiftMapper">
+    <select id="getAllGift" resultType="GiftDto">
+        SELECT
+            id,price,content, count, name, img, views
+        FROM
+            gifts
+        ORDER BY name
+    </select>
+    
+    <select id="searchGiftByName" resultType="GiftDto" parameterType="GiftDto">
+        SELECT
+            price,content,name,img
+        FROM
+            gifts
+        WHERE
+            name like CONCAT('%', #{name}, '%')
+    </select>
+
+    <select id="sortGiftByCount" resultType="GiftDto">
+        SELECT
+            price,content,count,name,img
+        FROM
+            gifts
+        ORDER BY count DESC
+        LIMIT 4
+    </select>
+
+    <select id="sortGiftByViews" resultType="GiftDto">
+        SELECT
+            price,content,count,name,img,views
+        FROM
+            gifts
+        ORDER BY views DESC
+    </select>
+
+    <select id="sortGiftByHighPrice" resultType="GiftDto">
+        SELECT
+            price,content,count,name,img
+        FROM
+            gifts
+        ORDER BY price DESC
+    </select>
+
+    <select id="sortGiftByLowPrice" resultType="GiftDto">
+        SELECT
+            price,content,count,name,img
+        FROM
+            gifts
+        ORDER BY price ASC
+    </select>
+    
+    <update id="viewCountById" parameterType="GiftDto">
+        UPDATE
+            gifts
+        SET
+            views = views + 1
+        WHERE
+            id=#{id}
+    </update>
+
+    <select id="getGiftById" parameterType="Integer" resultType="GiftDto">
+        SELECT
+            id, price, content, name, img
+        FROM
+            gifts
+        WHERE id=#{id}
+    </select>
+
+    <insert id="insertGift" parameterType="PaperDto">
+        INSERT INTO
+            papers(userId, nickname, content, giftId)
+        VALUES
+            (#{userId}, #{nickname}, #{content}, #{giftId})
+    </insert>
+
+    <update id="updateGiftCount" parameterType="Integer">
+        UPDATE gifts
+        SET count = count +1
+        WHERE id = #{id}
+    </update>
+
+    <select id="findReceiverNotUserId" parameterType="Integer" resultType="UserDto">
+        SELECT
+            id, name
+        FROM
+            users
+        WHERE id != #{id}
+    </select>
+
+</mapper>

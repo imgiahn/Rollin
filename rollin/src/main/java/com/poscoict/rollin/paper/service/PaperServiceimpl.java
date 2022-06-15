@@ -1,6 +1,6 @@
 package com.poscoict.rollin.paper.service;
 
-import com.poscoict.rollin.paper.model.PaperDTO;
+import com.poscoict.rollin.paper.model.PaperDto;
 import com.poscoict.rollin.paper.repo.PaperMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +14,17 @@ public class PaperServiceimpl implements PaperService{
 
 
     @Override
-    public List<PaperDTO> getAllPaper() {
+    public List<PaperDto> getAllPaper() {
         return paperMapper.getAllPaper();
     }
 
     @Override
-    public List<PaperDTO> getPaperById(PaperDTO paperDTO) {
+    public List<PaperDto> getPaperById(PaperDto paperDTO) {
         return paperMapper.getPaperById(paperDTO);
     }
 
     @Override
-    public Integer postPaper(PaperDTO paperDTO) {
+    public Integer postPaper(PaperDto paperDTO) {
         return paperMapper.postPaper(paperDTO);
     }
 }

@@ -13,6 +13,7 @@ import Gifts from "./app/gifts";
 import AuthRouter from "./component/AuthRouter";
 import Auth from "./app/Auth";
 import Profile2 from "./component/front/Profile2";
+import Login from "./component/front/Login";
 function App() {
   // const page = useSelector((state) => state.page);
   return (
@@ -49,6 +50,10 @@ function App() {
           ></Route>
           <Route path="/profile" element={<UserList />}></Route>
           <Route path="/add" element={<SendBody />}></Route>
+          <Route path="/gifts" element={<Gifts></Gifts>}></Route>
+          <Route path="/detailGift" element={<GiftDetail></GiftDetail>}></Route>
+        </Routes>
+        <Routes>
           <Route path="/gifts" element={<Gifts></Gifts>}></Route>
           <Route path="/detailGift" element={<GiftDetail></GiftDetail>}></Route>
         </Routes>

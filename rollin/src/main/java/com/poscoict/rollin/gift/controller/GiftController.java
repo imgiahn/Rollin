@@ -3,6 +3,7 @@ package com.poscoict.rollin.gift.controller;
 import com.poscoict.rollin.gift.model.GiftDto;
 import com.poscoict.rollin.gift.serive.GiftServiceImpl;
 import com.poscoict.rollin.paper.model.PaperDto;
+import com.poscoict.rollin.user.model.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ public class GiftController {
     PaperDto paperDto;
 
     @Autowired
-    PaperDto userDto;
+    UserDto userDto;
 
     @GetMapping("/")
     public List<GiftDto> getAllGift(){
@@ -89,7 +90,7 @@ public class GiftController {
     }
 
     @GetMapping("/receiver/{id}")
-    public List<PaperDto> getReceiverNotUserId(@PathVariable String id){
+    public List<UserDto> getReceiverNotUserId(@PathVariable String id){
         return giftService.findReceiverNotUserId(Integer.valueOf(id));
     }
 }

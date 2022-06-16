@@ -1,7 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { user } from "../../app/users";
 const UserDetail = () => {
-  const selectedUser = useSelector((state) => state.paper.selectedUser);
+  const selectedUser: user = useSelector((state: RootState) => state.paper.selectedUser);
   return (
     <div>
       <img src={selectedUser.img} alt={selectedUser.name}></img>

@@ -9,9 +9,8 @@ const SearchBar = () => {
     const onSubmitSearch = () => {
         alert("hi");
     };
-    return (<form className="searchBar" onSubmit={onSubmitSearch}>
-           <input type="text" placeholder="검색" name="name" onChange={(e) => onChangeHandler(e)}></input>
-           <button type="submit"></button>
-       </form>);
+    return (React.createElement("form", { className: "searchBar", onSubmit: onSubmitSearch },
+        React.createElement("input", { type: "text", placeholder: "\uAC80\uC0C9", name: "name", onChange: (e) => onChangeHandler(e) }),
+        React.createElement("button", { type: "submit" })));
 };
 export default SearchBar;

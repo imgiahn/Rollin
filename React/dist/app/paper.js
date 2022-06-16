@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    paper: null,
+    papers: [],
     isLoading: false,
     error: null,
-    selectedUser: null,
-    selectedPaper: null,
+    selectedUser: undefined,
+    selectedPaper: undefined,
 };
 const paperSlice = createSlice({
     name: "papers",
@@ -13,13 +13,13 @@ const paperSlice = createSlice({
         select: (state, action) => {
             state.selectedUser = action.payload;
         },
-        selectPaper: (state, { payload }) => {
-            console.log(payload);
-            state.selectedPaper = payload;
+        selectPaper: (state, action) => {
+            console.log(action.payload);
+            state.selectedPaper = action.payload;
         },
-        getPapers: (state, { payload }) => {
-            console.log(payload);
-            state.paper = payload;
+        getPapers: (state, action) => {
+            console.log(action.payload);
+            state.papers = action.payload;
         },
         load: (state) => {
             state.isLoading = true;
@@ -33,13 +33,13 @@ const paperSlice = createSlice({
             state.error = action.payload;
         },
         requestGetGift: (state, action) => {
-            console.log("requestGetGift");
+            console.log(action.payload);
         },
-        getGiftFromId: (state, { payload }) => {
-            state.selectedPaper = Object.assign(Object.assign({}, state.selectedPaper), { gift: payload });
+        getGiftFromId: (state, action) => {
+            state.selectedPaper = Object.assign(Object.assign({}, state.selectedPaper), { gift: action.payload });
         },
-        getGiftByIdFails: (state, { payload }) => {
-            state.error = payload;
+        getGiftByIdFails: (state, action) => {
+            state.error = action.payload;
         },
     },
 });

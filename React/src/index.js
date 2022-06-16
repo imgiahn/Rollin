@@ -3,9 +3,6 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-//store.js 배출
-
-// import { store } from "./app/store";
 import createStore from "./app/store";
 
 const store = createStore();

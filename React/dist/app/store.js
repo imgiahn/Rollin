@@ -1,4 +1,4 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers, getDefaultMiddleware } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import userReducer from "./users";
 // import pageReducer from "./page";
@@ -15,6 +15,7 @@ const reducer = combineReducers({
     gifts,
 });
 const sagaMiddleware = createSagaMiddleware();
+const defaultMiddleware = getDefaultMiddleware();
 function* rootSaga() {
     yield all([watchGetPaper(), watchGetGifts(), watchGetUser()]);
 }
@@ -27,7 +28,7 @@ const createStore = () => {
     const store = configureStore({
         reducer,
         devTools: true,
-        middleware: [sagaMiddleware],
+        middleware: [...defaultMiddleware, sagaMiddleware],
     });
     sagaMiddleware.run(rootSaga);
     return store;

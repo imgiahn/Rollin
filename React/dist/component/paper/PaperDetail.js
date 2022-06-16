@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Modal from "react-modal";
-const PaperDetail = ({ setIsSelect }) => {
-    const dispatch = useDispatch();
+const PaperDetail = (props) => {
     const selectedPaper = useSelector((state) => state.paper.selectedPaper);
     const checkGift = useSelector((state) => state.paper.selectedPaper.giftId);
     const gift = useSelector((state) => state.paper.selectedPaper.gift);
@@ -20,45 +19,29 @@ const PaperDetail = ({ setIsSelect }) => {
     const closeModal = () => {
         setModalIsOpen(false);
     };
-    return (<div className="container-sm border mt-3">
-      <h2>{selectedPaper.nickName}</h2>
-      <textarea className="form-control" cols="60" rows="20" name="content" readOnly="readOnly" defaultValue={selectedPaper.content}/>
-      <div className="mt-3 text-end">
-        {gift ? (<button type="button" className="btn btn-outline-primary" onClick={() => setModalIsOpen(true)}>
-            선물 확인하기
-          </button>) : null}
-
-        <button className="btn btn-outline-primary" onClick={() => setIsSelect(false)}>
-          목록으로
-        </button>
-      </div>
-      {gift ? (<Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>
-          <div className="container-sm">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5>선물 확인</h5>
-                </div>
-                <div className="modal-body">
-                  <div className="card">
-                    <img src="..." className="card-img-top" alt="..."/>
-                  </div>
-                  <div className="card-body">
-                    <div className="card-title">{gift.title}</div>
-                    <div className="card-text">{gift.price}원</div>
-                    <div>{gift.content}</div>
-                    <div>{gift.data}</div>
-                  </div>
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={closeModal}>
-                    닫기
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Modal>) : null}
-    </div>);
+    return (React.createElement("div", { className: "container-sm border mt-3" },
+        React.createElement("h2", null, selectedPaper.nickname),
+        React.createElement("textarea", { className: "form-control", cols: 60, rows: 20, name: "content", readOnly: true, defaultValue: selectedPaper.content }),
+        React.createElement("div", { className: "mt-3 text-end" },
+            gift ? (React.createElement("button", { type: "button", className: "btn btn-outline-primary", onClick: () => setModalIsOpen(true) }, "\uC120\uBB3C \uD655\uC778\uD558\uAE30")) : null,
+            React.createElement("button", { className: "btn btn-outline-primary", onClick: () => props.setIsSelect(false) }, "\uBAA9\uB85D\uC73C\uB85C")),
+        gift ? (React.createElement(Modal, { isOpen: modalIsOpen, onRequestClose: closeModal, ariaHideApp: false },
+            React.createElement("div", { className: "container-sm" },
+                React.createElement("div", { className: "modal-dialog" },
+                    React.createElement("div", { className: "modal-content" },
+                        React.createElement("div", { className: "modal-header" },
+                            React.createElement("h5", null, "\uC120\uBB3C \uD655\uC778")),
+                        React.createElement("div", { className: "modal-body" },
+                            React.createElement("div", { className: "card" },
+                                React.createElement("img", { src: "...", className: "card-img-top", alt: "..." })),
+                            React.createElement("div", { className: "card-body" },
+                                React.createElement("div", { className: "card-title" }, gift.name),
+                                React.createElement("div", { className: "card-text" },
+                                    gift.price,
+                                    "\uC6D0"),
+                                React.createElement("div", null, gift.content),
+                                React.createElement("div", null, gift.views))),
+                        React.createElement("div", { className: "modal-footer" },
+                            React.createElement("button", { type: "button", className: "btn btn-secondary", "data-bs-dismiss": "modal", onClick: closeModal }, "\uB2EB\uAE30"))))))) : null));
 };
 export default PaperDetail;

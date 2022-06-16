@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Modal from "react-modal";
 const PaperDetail = ({ setIsSelect }) => {
-    const dispatch = useDispatch();
     const selectedPaper = useSelector((state) => state.paper.selectedPaper);
     const checkGift = useSelector((state) => state.paper.selectedPaper.giftId);
     const gift = useSelector((state) => state.paper.selectedPaper.gift);
@@ -21,8 +20,8 @@ const PaperDetail = ({ setIsSelect }) => {
         setModalIsOpen(false);
     };
     return (<div className="container-sm border mt-3">
-      <h2>{selectedPaper.nickName}</h2>
-      <textarea className="form-control" cols="60" rows="20" name="content" readOnly="readOnly" defaultValue={selectedPaper.content}/>
+      <h2>{selectedPaper.nickname}</h2>
+      <textarea className="form-control" cols={60} rows={20} name="content" readOnly={true} defaultValue={selectedPaper.content}/>
       <div className="mt-3 text-end">
         {gift ? (<button type="button" className="btn btn-outline-primary" onClick={() => setModalIsOpen(true)}>
             선물 확인하기
@@ -44,10 +43,10 @@ const PaperDetail = ({ setIsSelect }) => {
                     <img src="..." className="card-img-top" alt="..."/>
                   </div>
                   <div className="card-body">
-                    <div className="card-title">{gift.title}</div>
+                    <div className="card-title">{gift.name}</div>
                     <div className="card-text">{gift.price}원</div>
                     <div>{gift.content}</div>
-                    <div>{gift.data}</div>
+                    <div>{gift.views}</div>
                   </div>
                 </div>
                 <div className="modal-footer">

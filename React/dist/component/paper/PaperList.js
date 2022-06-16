@@ -3,31 +3,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectPaper, load } from "../../app/paper";
 import { requestGetGift } from "../../app/paper";
 import AuthRouter from "../AuthRouter";
-const PapersList = ({ setIsSelect }) => {
+const PapersList = (props) => {
     const dispatch = useDispatch();
-    const papers = useSelector((state) => state.paper.paper);
+    const papers = useSelector((state) => state.paper.papers);
     const me = useSelector((state) => state.user.me);
     useEffect(() => {
         dispatch(load());
     }, [dispatch]);
-    return (<>
-      <AuthRouter />
-      <div className="container">
-        <div className="row text-center">
-          <h1>{me.name}님에게 온 Rollin</h1>
-          <div className="row row-cols-5">
-            {papers === null || papers === void 0 ? void 0 : papers.map((paper, index) => (<figure key={index} id={paper.nickname} className="figure col" onClick={(e) => {
-                // alert(`${e.currentTarget.id}님이 보낸 Rollin으로 이동`);
-                dispatch(selectPaper({ id: paper.id, userId: paper.userId, content: paper.content, nickName: paper.nickname, giftId: paper.giftId }));
-                dispatch(requestGetGift({ giftId: paper.giftId }));
-                setIsSelect(true);
-            }}>
-                <figcaption className="figure-caption">from {paper.nickname}</figcaption>
-                <img className="img-thumbnail col" alt={paper.nickname} title={paper.nickname}/>
-              </figure>))}
-          </div>
-        </div>
-      </div>
-    </>);
+    return (React.createElement(React.Fragment, null,
+        React.createElement(AuthRouter, null),
+        React.createElement("div", { className: "container" },
+            React.createElement("div", { className: "row text-center" },
+                React.createElement("h1", null,
+                    me.name,
+                    "\uB2D8\uC5D0\uAC8C \uC628 Rollin"),
+                React.createElement("div", { className: "row row-cols-5" }, papers === null || papers === void 0 ? void 0 : papers.map((paper, index) => (React.createElement("figure", { key: index, id: paper.nickname, className: "figure col", onClick: (e) => {
+                        // alert(`${e.currentTarget.id}님이 보낸 Rollin으로 이동`);
+                        dispatch(selectPaper({ id: paper.id, userId: paper.userId, content: paper.content, nickname: paper.nickname, giftId: paper.giftId }));
+                        dispatch(requestGetGift({ giftId: paper.giftId }));
+                        props.setIsSelect(true);
+                    } },
+                    React.createElement("figcaption", { className: "figure-caption" },
+                        "from ",
+                        paper.nickname),
+                    React.createElement("img", { className: "img-thumbnail col", alt: paper.nickname, title: paper.nickname })))))))));
 };
 export default PapersList;

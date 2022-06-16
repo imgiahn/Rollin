@@ -30,29 +30,22 @@ const AddPaperForm = () => {
         taRef.current.style.height = "auto";
         taRef.current.style.height = taRef.current.scrollHeight + "px";
     };
-    return (<div class="container mt-5 w-75">
-      <h2>{seleteduser.name}에게 Rollin 남기기</h2>
-      <form name="frm" action="../bbs" method="post">
-        <input type="hidden" name="param" value="writeBbsAf"/>
-        <input type="hidden" id="id" name="id" className="text" value={seleteduser === null || seleteduser === void 0 ? void 0 : seleteduser.id}/>
-        <div class="mb-3 form-floating">
-          <input type="text" className="text form-control" size="20" name="nickname" placeholder="닉네임"/>
-          <label htmlFor="nickname">닉네임</label>
-        </div>
-        <div className="content-wrap mb-3">
-          <label htmlFor="content">내용</label>
-          <textarea class="form-control" cols="60" rows="20" name="content" placeholder="여기에 내용을 입력해 주세요. " ref={taRef} onInput={handleResizeHeight}></textarea>
-        </div>
-        <div className="mb-3">
-          <button type="button" className="btn btn-sm btn-outline-primary" onClick={onClickSubmit}>
-            글작성완료
-          </button>
-          <Link className="btn btn-sm btn-outline-primary" to={"/profile"} onClick={() => dispatch(select({}))}>
-            목록으로
-          </Link>
-        </div>
-      </form>
-    </div>);
+    return (React.createElement("div", { class: "container mt-5 w-75" },
+        React.createElement("h2", null,
+            seleteduser.name,
+            "\uC5D0\uAC8C Rollin \uB0A8\uAE30\uAE30"),
+        React.createElement("form", { name: "frm", action: "../bbs", method: "post" },
+            React.createElement("input", { type: "hidden", name: "param", value: "writeBbsAf" }),
+            React.createElement("input", { type: "hidden", id: "id", name: "id", className: "text", value: seleteduser === null || seleteduser === void 0 ? void 0 : seleteduser.id }),
+            React.createElement("div", { class: "mb-3 form-floating" },
+                React.createElement("input", { type: "text", className: "text form-control", size: "20", name: "nickname", placeholder: "\uB2C9\uB124\uC784" }),
+                React.createElement("label", { htmlFor: "nickname" }, "\uB2C9\uB124\uC784")),
+            React.createElement("div", { className: "content-wrap mb-3" },
+                React.createElement("label", { htmlFor: "content" }, "\uB0B4\uC6A9"),
+                React.createElement("textarea", { class: "form-control", cols: "60", rows: "20", name: "content", placeholder: "\uC5EC\uAE30\uC5D0 \uB0B4\uC6A9\uC744 \uC785\uB825\uD574 \uC8FC\uC138\uC694. ", ref: taRef, onInput: handleResizeHeight })),
+            React.createElement("div", { className: "mb-3" },
+                React.createElement("button", { type: "button", className: "btn btn-sm btn-outline-primary", onClick: onClickSubmit }, "\uAE00\uC791\uC131\uC644\uB8CC"),
+                React.createElement(Link, { className: "btn btn-sm btn-outline-primary", to: "/profile", onClick: () => dispatch(select({})) }, "\uBAA9\uB85D\uC73C\uB85C")))));
 };
 {
     /* <script>

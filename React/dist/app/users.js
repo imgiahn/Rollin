@@ -25,8 +25,8 @@ const userSlice = createSlice({
         load5: (state, action) => {
             state.check = action.payload;
         },
-        getUsers: (state, { payload }) => {
-            state.users = payload;
+        getUsers: (state, action) => {
+            state.users = action.payload;
         },
         getUserById: (state, action) => {
             state.me = action.payload;

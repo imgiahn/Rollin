@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getGiftById, getReceiverNamesNotUserId, giftsApi, postGift } from "./GiftsApi";
+import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   allGifts: [],
   isLoading: false,

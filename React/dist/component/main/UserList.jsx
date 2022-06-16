@@ -14,9 +14,10 @@ const UserList = () => {
     //   dispatch(load7());
     // }, []);
     useEffect(() => {
-        if (Object.keys(paper.selectedUser).length !== 0) {
-            //console.log(myId, selectedUser.id);
-            if (paper.selectedUser.id === Number(myId)) {
+        var _a;
+        //console.log(myId, selectedUser.id);
+        if (paper.selectedUser !== null) {
+            if (((_a = paper.selectedUser) === null || _a === void 0 ? void 0 : _a.id) === Number(myId)) {
                 navigate("/paper");
             }
             else {

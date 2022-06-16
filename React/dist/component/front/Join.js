@@ -35,30 +35,22 @@ const Regi = ({ setpageSet }) => {
             }
         }
     };
-    return (<div className="container w-25">
-      <form method="POST" action="" name="frm">
-        <div className="row form-floating mb-3">
-          <input className="form-control" type="text" name="userId" placeholder="id"/>
-          <label htmlFor="id">ID </label>
-        </div>
-        <div className="row form-floating mb-3">
-          <input className="form-control" type="password" name="password" placeholder="pwd"/>
-          <label htmlFor="password">Password </label>
-        </div>
-        <div className="row form-floating mb-3">
-          <input className="form-control" type="text" name="name" placeholder="name"/>
-          <label htmlFor="name">Name </label>
-        </div>
-        <div className="row">
-          <input className="btn btn-outline-primary" type="button" onClick={() => makeSubmit()} value="회원가입"/>
-          <div className="form-text">
-            이미 아이디가 있으신까요?{" "}
-            <button className="btn btn-sm btn-link" type="button" onClick={() => setpageSet("login")}>
-              로그인
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>);
+    return (React.createElement("div", { className: "container w-25" },
+        React.createElement("form", { method: "POST", action: "", name: "frm" },
+            React.createElement("div", { className: "row form-floating mb-3" },
+                React.createElement("input", { className: "form-control", type: "text", name: "userId", placeholder: "id" }),
+                React.createElement("label", { htmlFor: "id" }, "ID ")),
+            React.createElement("div", { className: "row form-floating mb-3" },
+                React.createElement("input", { className: "form-control", type: "password", name: "password", placeholder: "pwd" }),
+                React.createElement("label", { htmlFor: "password" }, "Password ")),
+            React.createElement("div", { className: "row form-floating mb-3" },
+                React.createElement("input", { className: "form-control", type: "text", name: "name", placeholder: "name" }),
+                React.createElement("label", { htmlFor: "name" }, "Name ")),
+            React.createElement("div", { className: "row" },
+                React.createElement("input", { className: "btn btn-outline-primary", type: "button", onClick: () => makeSubmit(), value: "\uD68C\uC6D0\uAC00\uC785" }),
+                React.createElement("div", { className: "form-text" },
+                    "\uC774\uBBF8 \uC544\uC774\uB514\uAC00 \uC788\uC73C\uC2E0\uAE4C\uC694?",
+                    " ",
+                    React.createElement("button", { className: "btn btn-sm btn-link", type: "button", onClick: () => setpageSet("login") }, "\uB85C\uADF8\uC778"))))));
 };
 export default Regi;

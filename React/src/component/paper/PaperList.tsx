@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
+import React, { Dispatch, FunctionComponent, SetStateAction, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectPaper, load } from "../../app/paper";
+import { selectPaper, load, paper } from "../../app/paper";
 import { requestGetGift } from "../../app/paper";
+import { RootState } from "../../app/store";
+import { user } from "../../app/users";
 import AuthRouter from "../AuthRouter";
-
-const PapersList = ({ setIsSelect }) => {
+interface IProps {
+  setIsSelect: Dispatch<SetStateAction<boolean>>;
+}
+const PapersList: FunctionComponent<IProps> = (props: IProps) => {
   const dispatch = useDispatch();
-  const papers = useSelector((state) => state.paper.paper);
-  const me = useSelector((state) => state.user.me);
+  const papers: Array<paper> = useSelector((state: RootState) => state.paper.papers);
+  const me: user = useSelector((state: RootState) => state.user.me);
   useEffect(() => {
     dispatch(load());
   }, [dispatch]);
@@ -26,9 +30,9 @@ const PapersList = ({ setIsSelect }) => {
                 className="figure col"
                 onClick={(e) => {
                   // alert(`${e.currentTarget.id}님이 보낸 Rollin으로 이동`);
-                  dispatch(selectPaper({ id: paper.id, userId: paper.userId, content: paper.content, nickName: paper.nickname, giftId: paper.giftId }));
+                  dispatch(selectPaper({ id: paper.id, userId: paper.userId, content: paper.content, nickname: paper.nickname, giftId: paper.giftId }));
                   dispatch(requestGetGift({ giftId: paper.giftId }));
-                  setIsSelect(true);
+                  props.setIsSelect(true);
                 }}
               >
                 <figcaption className="figure-caption">from {paper.nickname}</figcaption>

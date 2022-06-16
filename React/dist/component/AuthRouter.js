@@ -27,6 +27,6 @@ const AuthRouter = () => {
         const from = location.pathname || "/profile";
         navigate(from === "/" ? "/profile" : from);
     };
-    return <></>;
+    return React.createElement(React.Fragment, null);
 };
 export default AuthRouter;

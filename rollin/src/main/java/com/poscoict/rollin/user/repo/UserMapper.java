@@ -1,7 +1,7 @@
 package com.poscoict.rollin.user.repo;
 
 
-import com.poscoict.rollin.user.model.UserDTO;
+import com.poscoict.rollin.user.model.UserDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    List<UserDTO> getAllUser();
+    List<UserDto> getAllUser();
 
 
     Integer insertUser(UserDto userDTO);

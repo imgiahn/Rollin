@@ -27,11 +27,13 @@ function* handleGetGifts() {
   }
 }
 
-function* handleSelectGiftByKey() {
+function* handleSelectGiftByKey(data) {
   try {
     // const giftId = yield select((state) => state.gifts.giftId);
-    const giftId = 1;
-    console.log("handleSelectGiftByKey, giftId:", giftId);
+    console.log("handleSelectGiftByKey, data: ", data);
+    console.log("handleSelectGiftByKey, data.payload: ", data.payload);
+    const giftId = data.payload;
+    // console.log("handleSelectGiftByKey, giftId:", giftId);
     const giftByKey = yield call(giftAxios, `/gift/${giftId}`, "get");
     console.log("handleSelectGiftByKey, giftByKey: ", giftByKey);
     yield put(selectGiftByKey(giftByKey));
@@ -40,10 +42,10 @@ function* handleSelectGiftByKey() {
   }
 }
 
-function* handleSelectReceivers() {
+function* handleSelectReceivers(data) {
   try {
     // const userId = yield select((state) => state.user.me.uid);
-    const userId = 1;
+    const userId = data.payload;
     const receivers = yield call(giftAxios, `/gift/receiver/${userId}`, "get");
     console.log("handleSelectReceivers, receivers:", receivers);
     yield put(selectReceivers(receivers));
@@ -54,8 +56,8 @@ function* handleSelectReceivers() {
 
 function* postGift(data) {
   try {
-    console.log(data);
-    console.log(data.payload);
+    console.log("postGift, data:", data);
+    console.log("postGift, data.payload", data.payload);
     yield call(giftAxios, "/gift", "post", data.payload);
     alert("선물을 보냈습니다");
   } catch (error) {

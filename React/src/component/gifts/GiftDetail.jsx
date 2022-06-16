@@ -10,33 +10,29 @@ import {
 } from "../../app/gifts";
 import { IMG_PATH } from "../../http/GiftAxios";
 import { Form, Input, Button } from "reactstrap";
+import { Navigate, useNavigate } from "react-router-dom";
 const GiftDetail = () => {
   const detailGift = useSelector((state) => state.gifts.detailGift);
   const receiversInfo = useSelector((state) => state.gifts.receiversInfo);
-
   const dispatch = useDispatch();
-  const getGiftDetail = () => {
-    dispatch(load2());
-    // dispatch(selectGiftByKey());
-  };
-
-  const getReceiverNames = () => {
-    dispatch(load3());
-  };
+  const navigate = useNavigate();
 
   const onSubmit = () => {
-    dispatch(insertGift(form));
-    console.log("submit:", form);
+    console.log("onSubmit, form:", form);
+    dispatch(insertGift({ ...form, giftId: detailGift.gift.id }));
+    navigate("/profile");
   };
 
   const [form, setForm] = useState({
-    receiverId: 0,
+    nickname: "",
+    userId: 0,
     content: "",
   });
 
   const onChangeSelect = (e) => {
     const { value } = e.target;
-    setForm({ ...form, receiverId: Number(value) });
+    console.log("onChangeSelect, e.target.value:", value);
+    setForm({ ...form, userId: Number(value) });
   };
 
   const onChangeContent = (e) => {
@@ -45,16 +41,13 @@ const GiftDetail = () => {
     setForm({ ...form, content: value });
   };
 
-  const consolee = () => {
-    console.log("detailGift.id:", detailGift.id);
-    console.log("detailGift.img", detailGift.img);
+  const onChangeNickName = (e) => {
+    const { value } = e.target;
+    console.log("nickname value", value);
+    setForm({ ...form, nickname: value });
   };
 
-  useEffect(() => {
-    getGiftDetail();
-    getReceiverNames();
-    consolee();
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="GiftDetailPage">
@@ -68,10 +61,17 @@ const GiftDetail = () => {
           src={`${IMG_PATH}${detailGift.gift.img}`}
           alt={detailGift.gift.name}
         ></img>
-        {detailGift.gift.content}
+        {detailGift.gift?.content}
       </div>
       <Form>
-        {/* 로그인한 아이디 빼고 모든 user name 가져오기*/}
+        닉네임 :
+        <Input
+          type="text"
+          name="nickname"
+          id="nickname"
+          onChange={(e) => onChangeNickName(e)}
+        ></Input>
+        <br></br>
         받는사람 :
         <Input
           type="select"
@@ -94,6 +94,14 @@ const GiftDetail = () => {
         <br />
         <Button color="info" onClick={onSubmit}>
           선물하기
+        </Button>
+        <Button
+          color="info"
+          onClick={() => {
+            navigate("/add");
+          }}
+        >
+          취소
         </Button>
       </Form>
     </div>

@@ -1,6 +1,6 @@
 package com.poscoict.rollin.user.service;
 
-import com.poscoict.rollin.user.model.UserDTO;
+import com.poscoict.rollin.user.model.UserDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public interface UserService {
 
-    List<UserDTO> getAllUser();
+    List<UserDto> getAllUser();
 
     Integer insertUser(UserDto userDTO);
 

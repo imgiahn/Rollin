@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   allGifts: [],
-  giftId: 1,
+  giftId: 0,
   detailGift: {
     gift: {},
     message: "",
@@ -65,18 +65,20 @@ export const giftsSlice = createSlice({
     load: (state) => {
       state.isLoading = true;
     },
-    load2: (state) => {},
+    load2: (state, { payload }) => {
+      state.giftId = payload;
+    },
     load3: (state) => {},
     selectGiftByKey: (state, { payload }) => {
       console.log("gifts.js 안의 selectGfitByKey, action.payload:", payload);
-      state.detailGift = payload;
+      state.detailGift.gift = payload;
     },
     selectReceivers: (state, { payload }) => {
       // console.log(payload);
-      state.receiversInfo = payload;
+      state.receiversInfo.receivers = payload;
     },
     insertGift: (state, action) => {
-      console.log(action.payload);
+      console.log("insertGift, action.payload: ", action.payload);
     },
     insertGiftFail: (state, action) => {
       state.error = action.payload;

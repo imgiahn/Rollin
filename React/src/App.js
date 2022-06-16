@@ -53,10 +53,6 @@ function App() {
           <Route path="/gifts" element={<Gifts></Gifts>}></Route>
           <Route path="/detailGift" element={<GiftDetail></GiftDetail>}></Route>
         </Routes>
-        <Routes>
-          <Route path="/gifts" element={<Gifts></Gifts>}></Route>
-          <Route path="/detailGift" element={<GiftDetail></GiftDetail>}></Route>
-        </Routes>
       </BrowserRouter>
       {/* {page.first ? <Main /> : <Front />} */}
     </div>

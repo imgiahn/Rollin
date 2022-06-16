@@ -9,14 +9,6 @@ const GiftDetail = () => {
   const receiversInfo = useSelector((state) => state.gifts.receiversInfo);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const getGiftDetail = () => {
-    dispatch(load2());
-    // dispatch(selectGiftByKey());
-  };
-
-  const getReceiverNames = () => {
-    dispatch(load3());
-  };
 
   const onSubmit = () => {
     console.log("onSubmit, form:", form);
@@ -47,18 +39,6 @@ const GiftDetail = () => {
     console.log("nickname value", value);
     setForm({ ...form, nickname: value });
   };
-
-  useEffect(() => {}, []);
-  const consolee = () => {
-    console.log("detailGift.id:", detailGift.id);
-    console.log("detailGift.img", detailGift.img);
-  };
-
-  useEffect(() => {
-    getGiftDetail();
-    getReceiverNames();
-    consolee();
-  }, []);
 
   return (
     <div className="GiftDetailPage">

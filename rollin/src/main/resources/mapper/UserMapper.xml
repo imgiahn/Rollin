@@ -19,9 +19,9 @@
     <insert id="insertUser" parameterType="UserDto" >
 
         Insert Into
-        users(userId, password, name)
+        users(userId, password, name, img)
         VALUES
-        (#{userId},#{password}, #{name})
+        (#{userId},#{password}, #{name}, #{img})
     </insert>
 
     <select id="idCheck" parameterType="UserDto" resultType="Integer">

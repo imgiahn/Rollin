@@ -11,6 +11,8 @@ import "./App.css";
 import GiftDetail from "./component/gifts/GiftDetail";
 import Gifts from "./app/gifts";
 import AuthRouter from "./component/AuthRouter";
+import Auth from "./app/Auth";
+import Profile2 from "./component/front/Profile2";
 function App() {
   // const page = useSelector((state) => state.page);
   return (
@@ -24,6 +26,15 @@ function App() {
               <>
                 <AuthRouter />
                 <Front />
+              </>
+            }
+          ></Route>
+          <Route path="/profile2" element={<Profile2 />}></Route>
+          <Route
+            path="/oauth/kakao/callback"
+            element={
+              <>
+                <Auth />
               </>
             }
           ></Route>

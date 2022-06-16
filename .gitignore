@@ -27,3 +27,4 @@ React/package-lock.json
 
 # TypeScript ignore
 React/dist
+React/package-lock.json

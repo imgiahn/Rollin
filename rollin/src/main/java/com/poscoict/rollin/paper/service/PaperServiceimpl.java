@@ -12,7 +12,7 @@ public class PaperServiceimpl implements PaperService{
     @Autowired
     PaperMapper paperMapper;
 
-
+    
     @Override
     public List<PaperDto> getAllPaper() {
         return paperMapper.getAllPaper();

@@ -1,14 +1,5 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import {
-  selectPaper,
-  getPapers,
-  getPapersFail,
-  load,
-  load2,
-  requestGetGift,
-  getGiftById,
-  getGiftByIdFails,
-} from "./paper";
+import { selectPaper, getPapers, getPapersFail, load, load2, requestGetGift, getGiftById, getGiftByIdFails, getGiftFromId } from "./paper";
 import { defaultAxios } from "./AxiosApi";
 
 function* postPaper(data) {
@@ -35,7 +26,7 @@ function* handleGetAllPaper() {
 function* handleGetPaperById() {
   try {
     console.log("handle start");
-    const id = yield select((state) => state.user.me.uid);
+    const id = yield select((state) => state.user.me.id);
 
     const paper = yield call(defaultAxios, `/paper/${id}`, "get", null);
     yield put(getPapers(paper.data));
@@ -44,33 +35,22 @@ function* handleGetPaperById() {
     yield put(getPapersFail(error));
   }
 }
-function* handleGetGiftById(data) {
+function* handleGetGiftFromId(data) {
   try {
     const giftId = data.payload.giftId;
     console.log(data.payload);
     console.log(giftId);
     if (giftId !== 0 && giftId !== undefined) {
-      // yield call(defaultAxios, `/peper/)
-      // put result
-      yield put(
-        getGiftById({
-          id: 1,
-          price: 35000,
-          content: "투썸플레이스의 초콜릿 케이크",
-          popularity: 0,
-          date: "2022-05-13",
-          name: "스트로베리 초콜릿 생크림",
-        })
-      );
+      const myGift = yield call(defaultAxios, `/gift/${giftId}`, null);
+      yield put(getGiftFromId(myGift.data));
     }
   } catch (error) {
     console.error(error);
     yield put(getGiftByIdFails(error));
   }
 }
-
 export function* watchGetPaper() {
-  yield yield takeLatest(load2, postPaper);
-  yield yield takeLatest(load, handleGetPaperById);
-  yield yield takeLatest(requestGetGift, handleGetGiftById);
+  yield takeLatest(load2, postPaper);
+  yield takeLatest(load, handleGetPaperById);
+  yield takeLatest(requestGetGift, handleGetGiftFromId);
 }

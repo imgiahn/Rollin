@@ -39,19 +39,14 @@ const paperSlice = createSlice({
     requestGetGift: (state, action) => {
       console.log("requestGetGift");
     },
-    getGiftById: (state, { payload }) => {
+    getGiftFromId: (state, { payload }) => {
       state.selectedPaper = { ...state.selectedPaper, gift: payload };
     },
     getGiftByIdFails: (state, { payload }) => {
       state.error = payload;
     },
-    // getSeletedUserPapers: (state, action) => {
-    //   const response = defaultAxios(`/paper/${action.payload.id}`, "get", null);
-    //   console.log(response);
-    //   state.paper = response;
-    // },
   },
 });
-export const { select, selectPaper, getPapers, getPapersFail, getSeletedUsersPapers, load, load2, getGiftById, getGiftByIdFails, requestGetGift } =
+export const { select, selectPaper, getPapers, getPapersFail, getSeletedUsersPapers, load, load2, getGiftFromId, getGiftByIdFails, requestGetGift } =
   paperSlice.actions;
 export default paperSlice.reducer;

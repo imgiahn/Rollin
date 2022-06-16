@@ -1,7 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getGiftById, getReceiverNamesNotUserId, giftsApi, postGift } from "./GiftsApi";
+import {
+  getGiftById,
+  getReceiverNamesNotUserId,
+  giftsApi,
+  postGift,
+} from "./GiftsApi";
 const initialState = {
   allGifts: [],
+  isLoading: false,
   detailGift: {
     gift: {},
     message: "",
@@ -18,16 +24,22 @@ const SELECT_ALL_GIFTS = "SELECT_ALL_GIFTS";
 const SELECT_RECEIVERS_BY_KEY = "SELECT_RECEIVER_NAMES_BY_KEY";
 const INSERT_GIFT = "INSERT_GIFT";
 
-export const selectGiftByKey = createAsyncThunk(SELECT_GIFT_BY_KEY, async (payload) => {
-  const gift = await getGiftById(Number(1));
-  return gift;
-});
+export const selectGiftByKey = createAsyncThunk(
+  SELECT_GIFT_BY_KEY,
+  async (payload) => {
+    const gift = await getGiftById(Number(1));
+    return gift;
+  }
+);
 
 // 로그인한 user id가 아닌 사람들 name 가져오기
-export const selectReceivers = createAsyncThunk(SELECT_RECEIVERS_BY_KEY, async (payload) => {
-  const receivers = await getReceiverNamesNotUserId(Number(1));
-  return receivers;
-});
+export const selectReceivers = createAsyncThunk(
+  SELECT_RECEIVERS_BY_KEY,
+  async (payload) => {
+    const receivers = await getReceiverNamesNotUserId(Number(1));
+    return receivers;
+  }
+);
 
 export const selectAllgifts = createAsyncThunk(SELECT_ALL_GIFTS, async () => {
   return await giftsApi();
@@ -57,8 +69,11 @@ export const giftsSlice = createSlice({
       console.log(payload);
       state.allGifts = payload;
     },
-    load: (state) => {
-      state.isLoading = true;
+    requestGetGiftName: (state) => {
+      console.log("requestGetGiftName");
+    },
+    requestSort: (state) => {
+      console.log("sort");
     },
   },
   extraReducers: (builder) => {
@@ -102,5 +117,6 @@ export const giftsSlice = createSlice({
   },
 });
 
-export const { selectAllGifts, load } = giftsSlice.actions;
+export const { selectAllGifts, load, requestGetGiftName, requestSort } =
+  giftsSlice.actions;
 export default giftsSlice.reducer;

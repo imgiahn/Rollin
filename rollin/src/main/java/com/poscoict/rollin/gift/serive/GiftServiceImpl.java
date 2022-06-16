@@ -1,46 +1,35 @@
 package com.poscoict.rollin.gift.serive;
 
 import com.poscoict.rollin.gift.model.GiftDto;
+import com.poscoict.rollin.gift.model.GiftEntity;
 import com.poscoict.rollin.gift.repository.GiftMapper;
+import com.poscoict.rollin.gift.repository.GiftRepository;
 import com.poscoict.rollin.paper.model.PaperDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class GiftServiceImpl implements GiftService {
     @Autowired
     GiftMapper giftMapper;
 
+    @Autowired
+    GiftRepository giftRepository;
+
     @Override
-    public List<GiftDto> findAllGift() {
-        return giftMapper.getAllGift() ;
+    public List<GiftEntity> findAllGift() {
+        return giftRepository.findAll() ;
     }
 
     @Override
-    public List<GiftDto> findGiftByName(GiftDto giftDto) {
-        return giftMapper.searchGiftByName(giftDto);
-    }
+    public List<GiftEntity> findGiftByName(String name) {
+        log.info(name);
 
-    @Override
-    public List<GiftDto> findSortGiftByCount() {
-        return giftMapper.sortGiftByCount();
-    }
-
-    @Override
-    public List<GiftDto> findSortGiftByViews() {
-        return giftMapper.sortGiftByViews();
-    }
-
-    @Override
-    public List<GiftDto> findSortGiftByHighPrice() {
-        return giftMapper.sortGiftByHighPrice();
-    }
-
-    @Override
-    public List<GiftDto> findSortGiftByLowPrice() {
-        return giftMapper.sortGiftByLowPrice();
+        return giftRepository.findByNameLike("%"+name+"%");
     }
 
     @Override

@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { insertGift, selectGiftByKey, selectReceivers } from "../../app/gifts";
+import {
+  insertGift,
+  load,
+  load2,
+  load3,
+  selectGiftByKey,
+  selectReceivers,
+} from "../../app/gifts";
 import { IMG_PATH } from "../../http/GiftAxios";
 import { Form, Input, Button } from "reactstrap";
 const GiftDetail = () => {
@@ -8,12 +15,13 @@ const GiftDetail = () => {
   const receiversInfo = useSelector((state) => state.gifts.receiversInfo);
 
   const dispatch = useDispatch();
-  const getGiftDetil = () => {
-    dispatch(selectGiftByKey());
+  const getGiftDetail = () => {
+    dispatch(load2());
+    // dispatch(selectGiftByKey());
   };
 
   const getReceiverNames = () => {
-    dispatch(selectReceivers());
+    dispatch(load3());
   };
 
   const onSubmit = () => {
@@ -37,9 +45,15 @@ const GiftDetail = () => {
     setForm({ ...form, content: value });
   };
 
+  const consolee = () => {
+    console.log("detailGift.id:", detailGift.id);
+    console.log("detailGift.img", detailGift.img);
+  };
+
   useEffect(() => {
-    getGiftDetil();
+    getGiftDetail();
     getReceiverNames();
+    consolee();
   }, []);
 
   return (

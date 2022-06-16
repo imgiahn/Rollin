@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getGiftById, getReceiverNamesNotUserId, giftsApi, postGift } from "./GiftsApi";
 const initialState = {
   allGifts: [],
-  giftId: 0,
+  isLoading: false,
   detailGift: {
     gift: {},
     message: "",
@@ -62,8 +63,11 @@ export const giftsSlice = createSlice({
       console.log(payload);
       state.allGifts = payload;
     },
-    load: (state) => {
-      state.isLoading = true;
+    requestGetGiftName: (state) => {
+      console.log("requestGetGiftName");
+    },
+    requestSort: (state) => {
+      console.log("sort");
     },
     load2: (state, { payload }) => {
       state.giftId = payload;
@@ -127,14 +131,6 @@ export const giftsSlice = createSlice({
   // },
 });
 
-export const {
-  selectAllGifts,
-  load,
-  load2,
-  load3,
-  selectGiftByKey,
-  selectReceivers,
-  insertGift,
-  insertGiftFail,
-} = giftsSlice.actions;
+export const { selectAllGifts, load, load2, load3, selectGiftByKey, selectReceivers, insertGift, insertGiftFail, requestSort, requestGetGiftName } =
+  giftsSlice.actions;
 export default giftsSlice.reducer;

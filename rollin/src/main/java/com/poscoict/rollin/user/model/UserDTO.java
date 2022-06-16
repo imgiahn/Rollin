@@ -15,6 +15,5 @@ public class UserDto {
     private String img;
     private String pcnt;
 
-
 }
 

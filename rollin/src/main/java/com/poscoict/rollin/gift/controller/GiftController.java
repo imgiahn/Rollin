@@ -1,7 +1,8 @@
 package com.poscoict.rollin.gift.controller;
 
 import com.poscoict.rollin.gift.model.GiftDto;
-import com.poscoict.rollin.gift.serive.GiftServiceImpl;
+import com.poscoict.rollin.gift.model.GiftEntity;
+import com.poscoict.rollin.gift.serive.GiftService;
 import com.poscoict.rollin.paper.model.PaperDto;
 import com.poscoict.rollin.user.model.UserDto;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,11 @@ import java.util.List;
 @Slf4j
 public class GiftController {
     @Autowired
-    GiftServiceImpl giftService;
+    GiftService giftService;
+
+    @Autowired
+    GiftEntity giftEntity;
+
     @Autowired
     GiftDto giftDto;
 
@@ -28,35 +33,14 @@ public class GiftController {
     UserDto userDto;
 
     @GetMapping("/")
-    public List<GiftDto> getAllGift(){
+    public List<GiftEntity> getAllGift(){
         return giftService.findAllGift();
     }
 
     @GetMapping("/search/{name}")
-    public List<GiftDto> getGiftByName(@PathVariable String name){
+    public List<GiftEntity> getGiftByName(@PathVariable String name){
         log.info(name);
-        giftDto.setName(name);
-        return giftService.findGiftByName(giftDto);
-    }
-
-    @GetMapping("/sortcount")
-    public List<GiftDto> getSortGiftByCount(){
-        return giftService.findSortGiftByCount();
-    }
-
-    @GetMapping("/sortview")
-    public List<GiftDto> getSortGiftByViews(){
-        return giftService.findSortGiftByViews();
-    }
-
-    @GetMapping("/sorthprice")
-    public List<GiftDto> getSortGiftByHighPrice(){
-        return giftService.findSortGiftByHighPrice();
-    }
-
-    @GetMapping("/sortlprice")
-    public List<GiftDto> getSortGiftByLowPrice(){
-        return giftService.findSortGiftByLowPrice();
+        return giftService.findGiftByName(name);
     }
     @PutMapping("/{id}")
     public Integer updateGiftView(

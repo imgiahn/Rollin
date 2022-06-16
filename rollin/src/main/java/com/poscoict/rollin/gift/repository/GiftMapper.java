@@ -13,13 +13,6 @@ import java.util.List;
 public interface GiftMapper {
     List<GiftDto> getAllGift();
     List<GiftDto> searchGiftByName(GiftDto giftDto);
-    List<GiftDto> sortGiftByCount();
-
-    List<GiftDto> sortGiftByViews();
-
-    List<GiftDto> sortGiftByHighPrice();
-
-    List<GiftDto> sortGiftByLowPrice();
 
     Integer viewCountById(GiftDto giftDto);
 

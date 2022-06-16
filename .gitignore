@@ -24,4 +24,9 @@
 rollin/src/main/resources/static/*
 rollin/src/main/resources/application.yml
 React/package-lock.json
+
+# TypeScript ignore
+React/dist
+React/package-lock.json
 rollin/src/main/resources/application.yml
+React/package-lock.json

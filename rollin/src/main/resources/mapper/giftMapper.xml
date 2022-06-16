@@ -18,39 +18,6 @@
         WHERE
             name like CONCAT('%', #{name}, '%')
     </select>
-
-    <select id="sortGiftByCount" resultType="GiftDto">
-        SELECT
-            price,content,count,name,img
-        FROM
-            gifts
-        ORDER BY count DESC
-        LIMIT 4
-    </select>
-
-    <select id="sortGiftByViews" resultType="GiftDto">
-        SELECT
-            price,content,count,name,img,views
-        FROM
-            gifts
-        ORDER BY views DESC
-    </select>
-
-    <select id="sortGiftByHighPrice" resultType="GiftDto">
-        SELECT
-            price,content,count,name,img
-        FROM
-            gifts
-        ORDER BY price DESC
-    </select>
-
-    <select id="sortGiftByLowPrice" resultType="GiftDto">
-        SELECT
-            price,content,count,name,img
-        FROM
-            gifts
-        ORDER BY price ASC
-    </select>
     
     <update id="viewCountById" parameterType="GiftDto">
         UPDATE

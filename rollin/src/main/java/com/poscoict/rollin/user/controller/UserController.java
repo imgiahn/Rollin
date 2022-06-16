@@ -1,7 +1,7 @@
 package com.poscoict.rollin.user.controller;
 
 
-import com.poscoict.rollin.user.model.UserDto;
+import com.poscoict.rollin.user.model.UserDTO;
 import com.poscoict.rollin.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     UserDto userDto;
     @GetMapping
-    public List<UserDto> getUser() {
+    public List<UserDTO> getUser() {
         return userService.getAllUser();
     }
     @GetMapping("/{id}")
@@ -27,7 +27,7 @@ public class UserController {
         return userService.getUserById(userDto);
     }
     @PostMapping
-    public Integer insert(@RequestBody UserDto userDTO){
+    public Integer insert(@RequestBody UserDTO userDTO){
         return userService.insertUser(userDTO);
     }
 

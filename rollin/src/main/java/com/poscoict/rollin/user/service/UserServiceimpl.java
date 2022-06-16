@@ -1,6 +1,6 @@
 package com.poscoict.rollin.user.service;
 
-import com.poscoict.rollin.user.model.UserDto;
+import com.poscoict.rollin.user.model.UserDTO;
 import com.poscoict.rollin.user.repo.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +14,12 @@ public class UserServiceimpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public List<UserDto> getAllUser() {
+    public List<UserDTO> getAllUser() {
         return userMapper.getAllUser();
     }
 
     @Override
-    public Integer insertUser(UserDto userDTO) {
+    public Integer insertUser(UserDTO userDTO) {
         return userMapper.insertUser(userDTO);
     }
 

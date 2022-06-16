@@ -1,6 +1,7 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest, select } from "redux-saga/effects";
 import { giftAxios } from "../http/GiftAxios";
-import { selectAllGifts, load } from "./gifts";
+import { defaultAxios } from "./AxiosApi";
+import { selectAllGifts, load, getGiftByIdSaga, getGiftByIdFails, requestGetGift } from "./gifts";
 
 ////////액션
 function* handleGetGifts() {
@@ -13,7 +14,6 @@ function* handleGetGifts() {
     console.error(error);
   }
 }
-
 export function* watchGetGifts() {
   yield takeLatest(load, handleGetGifts); //액션에 대해서 기존에 진행 중이던 작업이 있다면 취소 처리하고 가장 마지막으로 실행된 작업에 대해서만 액션 수행
 }

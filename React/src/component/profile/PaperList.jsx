@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectPaper, load, requestGetGift } from "../../app/paper";
+import { selectPaper, load } from "../../app/paper";
+import { requestGetGift } from "../../app/paper";
 import { fourth } from "../../app/page";
 
 const PapersList = () => {

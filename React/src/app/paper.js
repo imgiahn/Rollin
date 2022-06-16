@@ -39,8 +39,8 @@ const paperSlice = createSlice({
     requestGetGift: (state, action) => {
       console.log("requestGetGift");
     },
-    getGiftById: (state, { payload }) => {
-      state.selectedPaper = { ...state.selectedPaper, gift: payload };
+    getGiftFromId: (state, action) => {
+      state.selectedPaper = { ...state.selectedPaper, gift: action.payload };
     },
     getGiftByIdFails: (state, { payload }) => {
       state.error = payload;
@@ -52,6 +52,6 @@ const paperSlice = createSlice({
     // },
   },
 });
-export const { select, selectPaper, getPapers, getPapersFail, getSeletedUsersPapers, load, load2, getGiftById, getGiftByIdFails, requestGetGift } =
+export const { select, selectPaper, getPapers, getPapersFail, getSeletedUsersPapers, load, load2, getGiftFromId, getGiftByIdFails, requestGetGift } =
   paperSlice.actions;
 export default paperSlice.reducer;

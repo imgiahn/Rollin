@@ -7,6 +7,7 @@ import com.poscoict.rollin.gift.repository.GiftRepository;
 import com.poscoict.rollin.paper.model.PaperDto;
 import com.poscoict.rollin.user.model.UserDto;
 import lombok.extern.slf4j.Slf4j;
+import com.poscoict.rollin.user.model.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

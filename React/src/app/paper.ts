@@ -1,17 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { gift } from "./gifts";
 import { user } from "./users";
 
 // import { defaultAxios } from "./AxiosApi";
 
-export type gift = {
-  id: number;
-  price: number;
-  content: string;
-  count: number;
-  img: string;
-  name: string;
-  views: number;
-};
 export type paper = {
   id: number;
   userId: number;
@@ -54,9 +46,10 @@ const paperSlice = createSlice({
     load: (state: paperState) => {
       state.isLoading = true;
     },
-    load2: (state: paperState, action: PayloadAction) => {
+    load2: (state: paperState, action: PayloadAction<Object>) => {
       //   state.paperdata = action.payload;
       console.log(action.payload);
+      state.selectedUser = undefined;
     },
     getPapersFail: (state: paperState, action: PayloadAction<Error>) => {
       state.isLoading = false;

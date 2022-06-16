@@ -1,10 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { user } from "./users";
 
-const initialState = {
+export type gift = {
+  id: number;
+  price?: number;
+  content: string;
+  count?: number;
+  img?: string;
+  name?: string;
+  views?: number;
+};
+
+export type giftState = {
+  allGifts: Array<gift>;
+  giftId?: number;
+  error?: Error;
+  isLoading: boolean;
+  detailGift: {
+    gift?: gift;
+    message: string;
+  };
+  receiversInfo: {
+    receivers: Array<user>;
+    message: string;
+  };
+};
+const initialState: giftState = {
   allGifts: [],
   isLoading: false,
   detailGift: {
-    gift: {},
+    gift: undefined,
     message: "",
   },
   receiversInfo: {
@@ -59,32 +84,32 @@ export const giftsSlice = createSlice({
   name: "gifts",
   initialState,
   reducers: {
-    selectAllGifts: (state, { payload }) => {
-      console.log(payload);
-      state.allGifts = payload;
+    selectAllGifts: (state: giftState, action: PayloadAction<Array<gift>>) => {
+      console.log(action.payload);
+      state.allGifts = action.payload;
     },
-    requestGetGiftName: (state) => {
+    requestGetGiftName: (state: giftState, action: PayloadAction<object>) => {
       console.log("requestGetGiftName");
     },
-    requestSort: (state) => {
+    requestSort: (state: giftState, action: PayloadAction<object>) => {
       console.log("sort");
     },
-    load2: (state, { payload }) => {
-      state.giftId = payload;
+    load2: (state: giftState, action: PayloadAction<number>) => {
+      state.giftId = action.payload;
     },
-    load3: (state) => {},
-    selectGiftByKey: (state, { payload }) => {
-      console.log("gifts.js 안의 selectGfitByKey, action.payload:", payload);
-      state.detailGift.gift = payload;
+    load3: (state: giftState, action: PayloadAction<string>) => {},
+    selectGiftByKey: (state: giftState, action: PayloadAction<gift>) => {
+      console.log("gifts.js 안의 selectGfitByKey, action.payload:", action.payload);
+      state.detailGift.gift = action.payload;
     },
-    selectReceivers: (state, { payload }) => {
+    selectReceivers: (state: giftState, action: PayloadAction<Array<user>>) => {
       // console.log(payload);
-      state.receiversInfo.receivers = payload;
+      state.receiversInfo.receivers = action.payload;
     },
-    insertGift: (state, action) => {
+    insertGift: (state: giftState, action: PayloadAction<gift>) => {
       console.log("insertGift, action.payload: ", action.payload);
     },
-    insertGiftFail: (state, action) => {
+    insertGiftFail: (state: giftState, action: PayloadAction<Error>) => {
       state.error = action.payload;
       console.log("InsertGift Fail");
     },
@@ -131,6 +156,6 @@ export const giftsSlice = createSlice({
   // },
 });
 
-export const { selectAllGifts, load, load2, load3, selectGiftByKey, selectReceivers, insertGift, insertGiftFail, requestSort, requestGetGiftName } =
+export const { selectAllGifts, load2, load3, selectGiftByKey, selectReceivers, insertGift, insertGiftFail, requestSort, requestGetGiftName } =
   giftsSlice.actions;
 export default giftsSlice.reducer;

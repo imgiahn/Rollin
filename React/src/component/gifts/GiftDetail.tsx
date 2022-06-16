@@ -1,18 +1,19 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { insertGift, load, load2, load3, selectGiftByKey, selectReceivers } from "../../app/gifts";
+import { insertGift } from "../../app/gifts";
 import { IMG_PATH } from "../../http/GiftAxios";
 import { Form, Input, Button } from "reactstrap";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { RootState } from "../../app/store";
 const GiftDetail = () => {
-  const detailGift = useSelector((state) => state.gifts.detailGift);
-  const receiversInfo = useSelector((state) => state.gifts.receiversInfo);
+  const detailGift = useSelector((state: RootState) => state.gifts.detailGift);
+  const receiversInfo = useSelector((state: RootState) => state.gifts.receiversInfo);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = () => {
     console.log("onSubmit, form:", form);
-    dispatch(insertGift({ ...form, giftId: detailGift.gift.id }));
+    dispatch(insertGift({ ...form, id: detailGift.gift.id }));
     navigate("/profile");
   };
 
@@ -22,19 +23,19 @@ const GiftDetail = () => {
     content: "",
   });
 
-  const onChangeSelect = (e) => {
+  const onChangeSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     console.log("onChangeSelect, e.target.value:", value);
     setForm({ ...form, userId: Number(value) });
   };
 
-  const onChangeContent = (e) => {
+  const onChangeContent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     // console.log("content:", value);
     setForm({ ...form, content: value });
   };
 
-  const onChangeNickName = (e) => {
+  const onChangeNickName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     console.log("nickname value", value);
     setForm({ ...form, nickname: value });
@@ -46,7 +47,7 @@ const GiftDetail = () => {
         <h1>선물 상세 페이지</h1>
       </div>
       <div className="detailGiftDesc">
-        <img className="detailGiftImg" key={detailGift.gift.id} src={`${IMG_PATH}${detailGift.gift.img}`} alt={detailGift.gift.name}></img>
+        <img className="detailGiftImg" key={detailGift.gift?.id} src={`${IMG_PATH}${detailGift.gift?.img}`} alt={detailGift.gift?.name}></img>
         {detailGift.gift?.content}
       </div>
       <Form>

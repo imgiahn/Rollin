@@ -1,14 +1,21 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { Dispatch, SetStateAction } from "react";
+
 import Gifts from "../gifts/Gifts";
 import AddPaperForm from "./AddPaperForm";
 import AuthRouter from "../AuthRouter";
 import { useNavigate } from "react-router-dom";
+
+export interface SendProps {
+  setisAdd: Dispatch<SetStateAction<boolean>>;
+}
 const SendBody = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [isSelect, setIsSelect] = useState(false);
-  const [addType, setAddType] = useState("");
+  const [isSelect, setIsSelect] = React.useState(false);
+  const [addType, setAddType] = React.useState("");
+  const [isAdd, setisAdd] = React.useState(false);
+  React.useEffect(() => {
+    if (isAdd) navigate("/profile");
+  }, [isAdd, navigate]);
   return (
     <>
       <AuthRouter />
@@ -51,9 +58,9 @@ const SendBody = () => {
           </div>
         </div>
       ) : addType === "paper" ? (
-        <AddPaperForm />
+        <AddPaperForm setisAdd={setisAdd} />
       ) : (
-        <Gifts />
+        <Gifts setisAdd={setisAdd} />
       )}
     </>
   );

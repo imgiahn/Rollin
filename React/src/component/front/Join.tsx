@@ -1,37 +1,36 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 import { fistload, load3, load5 } from "../../app/users";
-const Regi = ({ setpageSet }) => {
+import { FrontProps } from "./Front";
+
+const Regi: FunctionComponent<FrontProps> = (props) => {
   const dispatch = useDispatch();
-  const idCheck = useSelector((state) => state.user.check);
+  const idCheck = useSelector((state: RootState) => state.user.check);
   console.log(idCheck);
   console.log(idCheck);
 
   const makeSubmit = () => {
-    let form = document.frm;
+    let form = document.forms[0];
     if (form.userId.value === "") {
       alert("ID를 입력해 주세요");
     } else if (form.password.value === "") {
       alert("Password를 입력해 주세요");
-    } else if (form.name.value === "") {
+    } else if (form.name === "") {
       alert("이름을 입력해 주세요");
     } else {
-      dispatch(
-        load5({
-          userId: form.userId.value,
-        })
-      );
+      dispatch(load5(form.userId.value));
 
       if (idCheck === 0) {
         dispatch(
           load3({
             userId: form.userId.value,
             password: form.password.value,
-            name: form.name.value,
+            name: form.name,
           })
         );
         dispatch(fistload());
-        setpageSet("login");
+        props.setPageSet("login");
       } else {
         alert("중복된 아이디 입니다");
       }
@@ -57,7 +56,7 @@ const Regi = ({ setpageSet }) => {
           <input className="btn btn-outline-primary" type="button" onClick={() => makeSubmit()} value="회원가입" />
           <div className="form-text">
             이미 아이디가 있으신까요?{" "}
-            <button className="btn btn-sm btn-link" type="button" onClick={() => setpageSet("login")}>
+            <button className="btn btn-sm btn-link" type="button" onClick={() => props.setPageSet("login")}>
               로그인
             </button>
           </div>

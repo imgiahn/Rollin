@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { RootState } from "../app/store";
 import { checkLogin } from "../app/users";
 
 const AuthRouter = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const isLogin = useSelector((state) => state.user.isLogin);
+  const isLogin = useSelector((state: RootState) => state.user.isLogin);
   const checkIsLoginFunc = async () => {
     await dispatch(checkLogin());
-    isLogin ? console.log("togo") : navigate("/");
+    isLogin ? toGo() : navigate("/");
   };
   useEffect(() => {
     checkIsLoginFunc();

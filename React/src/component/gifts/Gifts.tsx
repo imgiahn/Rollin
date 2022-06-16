@@ -1,35 +1,34 @@
+import React, { FunctionComponent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { IMG_PATH } from "../../http/GiftAxios";
-import { load, load2, load3 } from "../../app/gifts";
-import GiftDetail from "./GiftDetail";
-import { Navigate, useNavigate } from "react-router-dom";
+import { load2, load3 } from "../../app/gifts";
 import { requestGetGiftName, requestSort } from "../../app/gifts";
+import { RootState } from "../../app/store";
+import { useNavigate } from "react-router-dom";
+import { SendProps } from "../profile/SendBody";
 
-const Gifts = () => {
+const Gifts: FunctionComponent<SendProps> = (props: SendProps) => {
   const dispatch = useDispatch();
-  const allGifts = useSelector((state) => state.gifts.allGifts);
+  const allGifts = useSelector((state: RootState) => state.gifts.allGifts);
   const myId = localStorage.getItem("loginUser");
-  console.log(allGifts);
 
   const navigate = useNavigate();
-  const [searchKey, setSearchKey] = useState();
+  const [searchKey, setSearchKey] = React.useState("");
   const [sortKey, setSortKey] = useState("default");
-  console.log(allGifts);
 
   useEffect(() => {
     console.log(sortKey);
     dispatch(requestSort({ allGifts: allGifts, sortKey: sortKey }));
-  }, [sortKey]);
+  }, [sortKey, dispatch]);
 
-  const onSubmitSearch = (e) => {
+  const onSubmitSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(searchKey);
     dispatch(requestGetGiftName({ giftName: searchKey }));
   };
-
-  const onClickImg = (e) => {
-    dispatch(load2(e.target.id));
+  const onClickImg = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+    dispatch(load2(Number.parseInt(e.currentTarget.id)));
     dispatch(load3(myId));
     navigate("/detailGift");
   };
@@ -71,11 +70,11 @@ const Gifts = () => {
               key={gift.id}
               src={`${IMG_PATH}${gift.img}`}
               alt={gift.name}
-              id={gift.id}
-              content={gift.content}
-              count={gift.count}
-              name={gift.name}
-              view={gift.views}
+              id={gift.id.toString()}
+              // content={gift.content}
+              // count={gift.count}
+              // name={gift.name}
+              // view={gift.views}
               onClick={(e) => onClickImg(e)}
             ></img>
             <figcaption className="figure-caption text-center">{gift.name}</figcaption>

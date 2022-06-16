@@ -2,7 +2,8 @@ import React, { Dispatch, useEffect, useState, SetStateAction, FunctionComponent
 import { useSelector } from "react-redux";
 import Modal from "react-modal";
 import { RootState } from "../../app/store";
-import { gift, paper } from "../../app/paper";
+import { paper } from "../../app/paper";
+import { gift } from "../../app/gifts";
 interface IProps {
   setIsSelect: Dispatch<SetStateAction<boolean>>;
 }

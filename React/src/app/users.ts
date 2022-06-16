@@ -1,5 +1,4 @@
-import { Action, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Reducer } from "react";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Users } from "../data/User";
 
 export type user = {
@@ -30,13 +29,13 @@ const userSlice = createSlice({
     login: (state: userState, action: PayloadAction<boolean>) => {
       state.isLogin = action.payload;
     },
-    load3: (state: userState, action: PayloadAction) => {
+    load3: (state: userState, action: PayloadAction<Object>) => {
       console.log(action.payload);
     },
     load4: (state: userState, action: PayloadAction) => {
       console.log(action.payload);
     },
-    load7: (state: userState, action: PayloadAction) => {
+    load7: (state: userState, action: PayloadAction<Object>) => {
       console.log(action.payload);
     },
     load5: (state: userState, action: PayloadAction<number>) => {

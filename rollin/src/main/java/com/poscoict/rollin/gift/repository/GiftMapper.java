@@ -1,6 +1,7 @@
 package com.poscoict.rollin.gift.repository;
 
 import com.poscoict.rollin.gift.model.GiftDto;
+
 import com.poscoict.rollin.paper.model.PaperDto;
 import com.poscoict.rollin.user.model.UserDto;
 import io.swagger.models.auth.In;

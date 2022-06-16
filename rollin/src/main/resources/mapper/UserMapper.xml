@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poscoict.rollin.user.repo.UserMapper">
+
+    <select id="getAllUser" resultType="UserDto">
+
+        SELECT id, userId,
+               password,
+               name, img, pcnt
+        FROM
+            users;
+    </select>
+
+
+
+    <insert id="insertUser" parameterType="UserDto" >
+
+        Insert Into
+        users(userId, password, name)
+        VALUES
+        (#{userId},#{password}, #{name})
+    </insert>
+
+    <select id="idCheck" parameterType="UserDto" resultType="Integer">
+        select count(*)
+        FROM
+            users
+        WHERE
+            userId = #{userId}
+    </select>
+    <select id="getUserById" parameterType="UserDto" resultType="UserDto">
+        SELECT
+            userId,name,img,pcnt
+        FROM
+            users
+        WHERE
+            id = #{id}
+    </select>
+    <select id="LoginCheck" resultType="UserDto" parameterType="UserDto">
+        SELECT
+        id, userId, name
+        FROM
+        users
+        WHERE
+        userId=#{userId} and password = #{password}
+    </select>
+
+
+</mapper>

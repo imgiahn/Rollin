@@ -21,10 +21,7 @@
 *npm-debug.log*
 *yarn-debug.log*
 *yarn-error.log*
-rollin/src/main/resources/static/img/img1.jpg
-rollin/src/main/resources/static/img/img2.jpg
-rollin/src/main/resources/static/img/img3.jpg
-rollin/src/main/resources/static/img/img4.jpg
-rollin/src/main/resources/static/img/img5.jpg
-rollin/src/main/resources/static/img/img6.jpg
+rollin/src/main/resources/static/*
+rollin/src/main/resources/application.yml
+React/package-lock.json
 rollin/src/main/resources/application.yml

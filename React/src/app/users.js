@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Users } from "../data/User";
+import { defaultAxios } from "./AxiosApi";
 const initialState = {
   users: Users,
   isLogin: false,
-  me: { uid: 1, name: "seo", id: "seo", img: "/img/profile/2.jpeg", password: "1234" },
+  check: 0,
+  me: {},
 };
 // const GETUSERS = "GETUSERS";
 // const SELECT_USER_BY_ID = "SELECT_USER_BY_ID";
@@ -17,7 +19,31 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      state.isLogin = true;
+      state.isLogin = action.payload;
+    },
+    load3: (state, action) => {
+      console.log(action.payload);
+    },
+    load4: (state, action) => {
+      console.log(action.payload);
+    },
+    load7: (state, action) => {
+      console.log(action.payload);
+    },
+    load5: (state, action) => {
+      state.check = action.payload;
+    },
+    getUsers: (state, { payload }) => {
+      state.users = payload;
+    },
+    getUserById: (state, action) => {
+      state.me = action.payload;
+    },
+    fistload: (state, action) => {
+      state.check = 0;
+    },
+    checkLogin: (state, action) => {
+      console.log("check login...");
     },
     // getUsers: (state, action) => {
     //   state.value = action.payload;
@@ -28,5 +54,5 @@ const userSlice = createSlice({
   },
   extraReducers: {},
 });
-export const { login, getUsers, selectUserById } = userSlice.actions;
+export const { login, getUsers, selectUserById, load3, load4, load5, getUserById, load7, fistload, checkLogin } = userSlice.actions;
 export default userSlice.reducer;

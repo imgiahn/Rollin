@@ -6,7 +6,7 @@ spring:
       enabled: true
   datasource:
     url: jdbc:mysql://localhost:3306/rollin?serverTimezone=UTC&characterEncoding=UTF-8
-    username : root
+    username: root
     password: 1234
   mvc:
     pathmatch:
@@ -17,3 +17,4 @@ spring:
       max-request-size: 10MB
 mybatis:
   config-location: classpath:config/MyBatis.xml
+

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { third } from "../../app/page";
+import { Link } from "react-router-dom";
+import { load2, select } from "../../app/paper";
 
 const AddPaperForm = () => {
   const dispatch = useDispatch();
@@ -13,8 +14,16 @@ const AddPaperForm = () => {
     } else if (form.content.value === "") {
       alert("내용을 입력해 주세요");
     } else {
+      console.log(seleteduser.uid, form.nickname.value, form.content.value);
+      dispatch(
+        load2({
+          userId: seleteduser.uid,
+          nickname: form.nickname.value,
+          content: form.content.value,
+        })
+      );
       //paper추가 reducer 필요 (nickname + content)
-      dispatch(third());
+      //   dispatch(third());
     }
   };
   //textarea 높이 자동조정
@@ -30,7 +39,7 @@ const AddPaperForm = () => {
         <input type="hidden" name="param" value="writeBbsAf" />
         <input type="hidden" id="id" name="id" className="text" value={seleteduser?.id} />
         <div class="mb-3 form-floating">
-          <input type="text" className="text form-control" size="20" name="nickname" placeholder="제목을 입력해주세요." />
+          <input type="text" className="text form-control" size="20" name="nickname" placeholder="닉네임" />
           <label htmlFor="nickname">닉네임</label>
         </div>
         <div className="content-wrap mb-3">
@@ -49,9 +58,9 @@ const AddPaperForm = () => {
           <button type="button" className="btn btn-sm btn-outline-primary" onClick={onClickSubmit}>
             글작성완료
           </button>
-          <button type="button" className="btn btn-sm btn-outline-primary" onClick={() => dispatch(third())}>
+          <Link className="btn btn-sm btn-outline-primary" to={"/profile"} onClick={() => dispatch(select({}))}>
             목록으로
-          </button>
+          </Link>
         </div>
       </form>
     </div>

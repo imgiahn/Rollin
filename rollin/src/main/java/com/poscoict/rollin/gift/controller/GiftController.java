@@ -69,6 +69,7 @@ public class GiftController {
 
     @GetMapping("/{id}")
     public GiftDto getGiftById(@PathVariable String id){
+        log.info("getGiftById 실행");
         return giftService.getGiftById(Integer.valueOf(id));
     }
 

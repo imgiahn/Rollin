@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fourth } from "../../app/page";
 import Modal from "react-modal";
 const PaperDetail = ({ setIsSelect }) => {
   const dispatch = useDispatch();

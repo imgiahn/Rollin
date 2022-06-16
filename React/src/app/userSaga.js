@@ -2,7 +2,6 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import { getPapersFail, load2 } from "./paper";
 import { defaultAxios } from "./AxiosApi";
 import { getUsers, getUserById, login, load3, load4, load5, load7, checkLogin } from "./users";
-import { first, second } from "./page";
 
 function* getUser() {
   try {
@@ -41,7 +40,7 @@ function* idCheck(data) {
 function* LoginCheck(data) {
   try {
     // console.log('data.payload', data.payload);
-    const response = yield call(defaultAxios, "/user/Login", "post", data.payload);
+    const response = yield call(defaultAxios, "/user/login", "post", data.payload);
     console.log(response);
     console.log(response.data[0].id === undefined);
     yield put(getUserById(response.data[0]));

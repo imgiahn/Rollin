@@ -38,7 +38,7 @@ public class UserController {
         return userService.idCheck(userDto);
     }
 
-    @PostMapping("/Login")
+    @PostMapping("/login")
     public List<UserDto> LoginCheck(@RequestBody  UserDto userDto){
         return userService.LoginCheck(userDto);
     }

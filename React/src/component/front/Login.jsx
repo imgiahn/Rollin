@@ -1,10 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { first, fourth, second } from "../../app/page";
 import { load2 } from "../../app/paper";
 import { load7 } from "../../app/users";
 import { Link, useLocation } from "react-router-dom";
-const Login = () => {
+const Login = ({ setpageSet }) => {
   const dispatch = useDispatch();
 
   const LoginClick = () => {
@@ -40,7 +39,7 @@ const Login = () => {
           </button>
           <div className="form-text">
             아이디가 없으신가요?
-            <button className="btn btn-sm btn-link" type="button" onClick={() => dispatch(second())}>
+            <button className="btn btn-sm btn-link" type="button" onClick={() => setpageSet("join")}>
               회원가입
             </button>
           </div>

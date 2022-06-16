@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import userReducer from "./users";
-import pageReducer from "./page";
+// import pageReducer from "./page";
 import paperReducer from "./paper";
 import gifts from "./gifts";
 import { watchGetGifts } from "./giftSaga";
@@ -10,7 +10,7 @@ import { all } from "redux-saga/effects";
 import { watchGetUser } from "./userSaga";
 const reducer = combineReducers({
   user: userReducer,
-  page: pageReducer,
+  // page: pageReducer,
   paper: paperReducer,
   gifts,
 });

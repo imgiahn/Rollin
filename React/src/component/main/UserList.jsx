@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { third } from "../../app/page";
 import { getSeletedUsersPapers, select } from "../../app/paper";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -52,7 +51,6 @@ const UserList = () => {
                       img: user.img,
                     })
                   );
-                  dispatch(third());
                 }}
               />
             </figure>

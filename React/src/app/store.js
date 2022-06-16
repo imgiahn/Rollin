@@ -8,16 +8,20 @@ import { watchGetGifts } from "./giftSaga";
 import { watchGetPaper } from "./paperSaga";
 import { all } from "redux-saga/effects";
 import { watchGetUser } from "./userSaga";
+import { watchGetAPI } from "./AuthSaga";
+import apiReducer from "./Auths";
+
 const reducer = combineReducers({
-  user: userReducer,
-  // page: pageReducer,
-  paper: paperReducer,
-  gifts,
+    user: userReducer,
+    // page: pageReducer,
+    paper: paperReducer,
+    api: apiReducer,
+    gifts,
 });
 
 const sagaMiddleware = createSagaMiddleware();
 function* rootSaga() {
-  yield all([watchGetPaper(), watchGetGifts(), watchGetUser()]);
+    yield all([watchGetPaper(), watchGetGifts(), watchGetUser(), watchGetAPI()]);
 }
 // export const store = configureStore({
 //   reducer,
@@ -38,14 +42,14 @@ function* rootSaga() {
 // });
 
 const createStore = () => {
-  const store = configureStore({
-    reducer,
-    devTools: true,
-    middleware: [...getDefaultMiddleware(), sagaMiddleware],
-  });
-  sagaMiddleware.run(rootSaga);
+    const store = configureStore({
+        reducer,
+        devTools: true,
+        middleware: [...getDefaultMiddleware(), sagaMiddleware],
+    });
+    sagaMiddleware.run(rootSaga);
 
-  return store;
+    return store;
 };
 
 export default createStore;

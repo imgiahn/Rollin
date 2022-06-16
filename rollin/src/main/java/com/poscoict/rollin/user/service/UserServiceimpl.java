@@ -38,5 +38,10 @@ public class UserServiceimpl implements UserService {
         return userMapper.getUserById(userDto);
     }
 
+    @Override
+    public List<UserDto> kaoCheck(UserDto userDto) {
+        return userMapper.kaoCheck(userDto);
+    }
+
 
 }

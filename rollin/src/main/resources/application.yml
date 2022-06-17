@@ -1,0 +1,60 @@
+server:
+  port: 8000
+spring:
+  devtools:
+    livereload:
+      enabled: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/rollin?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 1234
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 10MB
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLInnoDBDialect
+        format_sql: 'true'
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: 'false'
+  mail:
+    # gmail-smtp 사용
+    default-encoding: UTF-8
+    host : smtp.gmail.com
+    port : 587
+    # gmail 계정
+    username : gudwodjssl2@gmail.com
+    # 앱 비밀번호
+    password : buqtbvyoiijwrhsz
+    properties :
+      mail :
+        smtp :
+          auth : true
+          starttls :
+            enable : true
+            required : true
+    protocol: smtp
+mybatis:
+  config-location: classpath:config/MyBatis.xml
+
+jwt:
+  secret_key: SECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEY
+  expTime : 86400000
+
+jpa:
+  properties:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQLInnoDBDialect
+      format_sql: 'true'
+  database-platform: org.hibernate.dialect.MySQL5Dialect
+  hibernate:
+    ddl-auto: update
+    naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  show-sql: 'true'

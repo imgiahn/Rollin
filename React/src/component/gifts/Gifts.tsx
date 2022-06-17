@@ -29,6 +29,7 @@ const Gifts: FunctionComponent<SendProps> = (props: SendProps) => {
   };
   const onClickImg = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     dispatch(load2(Number.parseInt(e.currentTarget.id)));
+    // dispatch(load3(myId));
     navigate("/detailGift");
   };
 

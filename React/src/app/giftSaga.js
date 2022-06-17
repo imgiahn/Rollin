@@ -15,6 +15,8 @@ import {
   load3,
   requestGetGiftName,
   requestSort,
+  postEmailFail,
+  postEmail,
 } from "./gifts";
 
 ////////액션
@@ -112,10 +114,23 @@ function* postGift(data) {
   }
 }
 
+function* sendEmail(data) {
+  try {
+    console.log("sendEmail, data:", data);
+    console.log("sendEmail, data.payload:", data.payload);
+    console.log("giftSaga-sendEmail");
+    yield call(giftAxios, "/mail/send", "post", data.payload);
+  } catch (error) {
+    yield put(postEmailFail(error));
+    console.error(error);
+  }
+}
+
 export function* watchGetGifts() {
   yield takeLatest(requestGetGiftName, handleSearchGifts);
   yield takeLatest(requestSort, handleSortGift);
   yield takeLatest(load2, handleSelectGiftByKey);
   yield takeLatest(load3, handleSelectReceivers);
   yield takeLatest(insertGift, postGift);
+  yield takeLatest(postEmail, sendEmail);
 }

@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getGiftById, getReceiverNamesNotUserId, giftsApi, postGift } from "./GiftsApi";
+import {
+  getGiftById,
+  getReceiverNamesNotUserId,
+  giftsApi,
+  postGift,
+} from "./GiftsApi";
 const initialState = {
   allGifts: [],
   isLoading: false,
@@ -88,6 +93,13 @@ export const giftsSlice = createSlice({
       state.error = action.payload;
       console.log("InsertGift Fail");
     },
+    postEmail: (state, action) => {
+      console.log("postEmail, acation.payload: ", action.payload);
+    },
+    postEmailFail: (state, action) => {
+      state.error = action.payload;
+      console.log("postEmail Fail");
+    },
   },
   // extraReducers: (builder) => {
   //   builder
@@ -131,6 +143,18 @@ export const giftsSlice = createSlice({
   // },
 });
 
-export const { selectAllGifts, load, load2, load3, selectGiftByKey, selectReceivers, insertGift, insertGiftFail, requestSort, requestGetGiftName } =
-  giftsSlice.actions;
+export const {
+  selectAllGifts,
+  load,
+  load2,
+  load3,
+  selectGiftByKey,
+  selectReceivers,
+  insertGift,
+  insertGiftFail,
+  requestSort,
+  requestGetGiftName,
+  postEmail,
+  postEmailFail,
+} = giftsSlice.actions;
 export default giftsSlice.reducer;

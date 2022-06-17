@@ -17,15 +17,14 @@ const UserList = () => {
   useEffect(() => {
     //console.log(myId, selectedUser.id);
     if (paper.selectedUser !== undefined) {
-      console.log(user.me.id);
-      console.log(paper.selectedUser.id, user.me.id);
+      //console.log(paper.selectedUser.id, user);
       if (paper.selectedUser?.id === user.me.id) {
         navigate("/paper");
       } else {
         navigate("/add");
       }
     }
-  }, [paper, navigate, user]);
+  }, [paper]);
   return (
     <>
       <AuthRouter />

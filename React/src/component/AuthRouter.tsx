@@ -10,7 +10,7 @@ const AuthRouter = () => {
   const location = useLocation();
   const isLogin = useSelector((state: RootState) => state.user.isLogin);
   const checkIsLoginFunc = async () => {
-    await dispatch(checkLogin());
+    dispatch(checkLogin());
     isLogin ? toGo() : navigate("/");
   };
   useEffect(() => {

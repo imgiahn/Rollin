@@ -25,9 +25,9 @@ public class PaperController {
         return paperService.getAllPaper();
     }
 
-    @GetMapping("/{id}")
-    public Optional<PaperEntity> getPaperById(@PathVariable String id) {
-        return paperService.getPaperById(Integer.valueOf(id));
+    @GetMapping("/{userId}")
+    public List<PaperEntity> getPaperByUserId(@PathVariable String userId) {
+        return paperService.getPaperByUserId(Integer.valueOf(userId));
     }
     @PostMapping
     public Boolean postPaper(@RequestBody PaperEntity paperEntity){

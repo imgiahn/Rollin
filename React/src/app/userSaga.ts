@@ -57,7 +57,8 @@ function* handleCheckLogin() {
   try {
     const myToken = localStorage.getItem("loginUser");
     const response: AxiosResponse<any, any> = yield call(AuthAxios, "/user/me", "get", undefined);
-    yield put(getUserById(response.data));
+    console.log(response.data);
+    yield put(getUserById(response));
     yield put(login(true));
   } catch (error) {
     //console.error(error);

@@ -45,7 +45,7 @@ const userSlice = createSlice({
       state.users = action.payload;
     },
     getUserById: (state: userState, action: PayloadAction<any>) => {
-      state.me = action.payload[0];
+      state.me = action.payload.data;
     },
     fistload: (state: userState, action: PayloadAction) => {
       state.check = 0;

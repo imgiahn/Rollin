@@ -24,8 +24,8 @@ public class PaperServiceimpl implements PaperService{
     }
 
     @Override
-    public Optional<PaperEntity> getPaperById(Integer id) {
-        return paperRepository.findById(id);
+    public List<PaperEntity> getPaperByUserId(Integer userId) {
+        return paperRepository.findAllByUserId(userId);
     }
 
     @Override

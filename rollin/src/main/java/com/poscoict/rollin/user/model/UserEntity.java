@@ -25,7 +25,7 @@ public class UserEntity {
     @Column(name="name")
     private String name;
     @Column(name="img")
-    private String img;
+    private String img="http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg";
     @Column(name="pcnt")
     private Integer pcnt=0;
 

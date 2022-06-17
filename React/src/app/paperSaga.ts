@@ -30,6 +30,7 @@ function* handleGetPaperById() {
     const id: number = yield select((state) => state.user.me.id);
 
     const paper: AxiosResponse<any, any> = yield call(defaultAxios, `/paper/${id}`, "get", null);
+    console.log(paper);
     yield put(getPapers(paper.data));
   } catch (error: any) {
     console.error(error);

@@ -9,6 +9,6 @@ import java.util.Optional;
 public interface PaperService {
     List<PaperEntity> getAllPaper();
 
-    Optional<PaperEntity> getPaperById(Integer id);
+    List<PaperEntity> getPaperByUserId(Integer id);
     Boolean postPaper(PaperEntity paperEntity);
 }

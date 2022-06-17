@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Users } from "../data/User";
-import { defaultAxios } from "./AxiosApi";
 export type authState = {
   Api: object;
   kakaoid: number;
@@ -9,12 +7,6 @@ const initialState: authState = {
   Api: {},
   kakaoid: 0,
 };
-// const GETUSERS = "GETUSERS";
-// const SELECT_USER_BY_ID = "SELECT_USER_BY_ID";
-// const INSERT_USER = "INSERT_USER";
-// const UPDATE_USER = "UPDATE_USER";
-// const DELETE_USER = "DELETE_USER";
-// const LOGIN = "LOGIN";
 
 const APISlice = createSlice({
   name: "kakaos",

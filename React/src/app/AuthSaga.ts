@@ -2,19 +2,26 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import { getPapersFail } from "./paper";
 import { defaultAxios } from "./AxiosApi";
 import { APIload, APIload2, APIload3, putAPI, putKaokaoID } from "./Auths";
+import { AxiosResponse } from "axios";
 
-function* getKakaoAPI(data) {
+type loginData = {
+  id: number;
+  password: string;
+  properties: any;
+};
+function* getKakaoAPI(data: any) {
   try {
-    const data2 = yield window.Kakao.API.request({
+    const data2: loginData = yield window.Kakao.API.request({
       url: data.payload,
     });
+    console.log(data2);
     // console.log(data2.id);
     // console.log(data2.id);
     // console.log(data2.properties.nickname);
     // console.log(data2.properties.profile_image);
 
     yield put(putAPI(data2));
-    const response = yield call(defaultAxios, "/user/kaologin", "post", {
+    const response: AxiosResponse<any, any> = yield call(defaultAxios, "/user/kaologin", "post", {
       userId: data2.id,
     });
 
@@ -29,7 +36,7 @@ function* getKakaoAPI(data) {
         name: data2.properties.nickname,
         img: data2.properties.profile_image,
       });
-      const response = yield call(defaultAxios, "/user/kaologin", "post", {
+      const response: AxiosResponse<any, any> = yield call(defaultAxios, "/user/kaologin", "post", {
         userId: data2.id,
       });
       localStorage.setItem("loginUser", response.data[0].id);
@@ -40,20 +47,20 @@ function* getKakaoAPI(data) {
   }
 }
 
-function* getKakao(data) {
+function* getKakao(data: any) {
   try {
-    const response = yield call(defaultAxios, "/user/kaologin", "post", data.payload);
+    const response: AxiosResponse<any, any> = yield call(defaultAxios, "/user/kaologin", "post", data.payload);
     yield put(putKaokaoID(response.data));
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
   }
 }
 
-function* postKakao(data) {
+function* postKakao(data: any) {
   try {
     yield call(defaultAxios, "/user", "post", data.payload);
     alert("회원가입이 완료되었습니다");
-  } catch (error) {
+  } catch (error: any) {
     alert("아이디가 중복입니다 다시 가입해 주세요");
     yield put(getPapersFail(error));
     console.error(error);

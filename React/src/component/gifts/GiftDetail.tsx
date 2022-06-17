@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { insertGift } from "../../app/gifts";
+import { insertGift, postEmail } from "../../app/gifts";
 import { IMG_PATH } from "../../app/AxiosApi";
 import { Form, Input, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
@@ -12,23 +12,23 @@ const GiftDetail = () => {
     (state: RootState) => state.gifts.receiversInfo
   );
   const receiver = useSelector((state: RootState) => state.paper.selectedUser);
-  // const me = useSelector((state: RootState) => state.user.me);
+  const me = useSelector((state: RootState) => state.user.me);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = () => {
     console.log("onSubmit, form:", form);
-    dispatch(insertGift({ ...form, id: detailGift.gift.id }));
-    // dispatch(
-    //   postEmail({
-    //     address: me.userId,
-    //     title: "구매한 내역입니다",
-    //     giftName: detailGift.gift.name,
-    //     giftContent: detailGift.gift.content,
-    //     giftPrice: Number(detailGift.gift.price),
-    //     message: receiver.name + "님에게 보낸 상품 내역입니다",
-    //   })
-    // );
+    dispatch(insertGift({ ...form, giftId: detailGift.gift.id }));
+    dispatch(
+      postEmail({
+        address: me.userId,
+        title: "구매한 내역입니다",
+        giftName: detailGift.gift.name,
+        giftContent: detailGift.gift.content,
+        giftPrice: Number(detailGift.gift.price),
+        message: receiver.name + "님에게 보낸 상품 내역입니다",
+      })
+    );
     navigate("/profile");
   };
 

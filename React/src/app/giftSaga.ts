@@ -35,7 +35,7 @@ function* handleSearchGifts(data: PayloadAction<string>) {
         undefined
       );
     }
-    yield put(selectAllGifts(gifts)); //put은 특정 액션을 dispatch한다
+    yield put(selectAllGifts(gifts.data)); //put은 특정 액션을 dispatch한다
   } catch (error) {
     console.log(error);
   }

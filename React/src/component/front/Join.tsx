@@ -26,7 +26,7 @@ const Regi: FunctionComponent<FrontProps> = (props) => {
           load3({
             userId: form.userId.value,
             password: form.password.value,
-            name: form.name,
+            name: form.username.value,
           })
         );
         dispatch(fistload());
@@ -49,7 +49,7 @@ const Regi: FunctionComponent<FrontProps> = (props) => {
           <label htmlFor="password">Password </label>
         </div>
         <div className="row form-floating mb-3">
-          <input className="form-control" type="text" name="name" placeholder="name" />
+          <input className="form-control" type="text" name="username" placeholder="name" />
           <label htmlFor="name">Name </label>
         </div>
         <div className="row">

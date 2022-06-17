@@ -131,11 +131,11 @@ function* postGift(data: { payload: any }) {
     console.error(error);
   }
 }
-function* handleGiftsView(data) {
+function* handleGiftsView(data: { payload: any }) {
   try {
-    const id = data.payload;
+    const id = data.payload.id;
     console.log("view id:", id);
-    yield call(giftAxios, `/gift/${id}`, "put");
+    yield call(defaultAxios, `/gift/${id}`, "put",undefined);
   } catch (error) {
     console.log(error);
   }

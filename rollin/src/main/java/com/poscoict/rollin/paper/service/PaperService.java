@@ -1,12 +1,14 @@
 package com.poscoict.rollin.paper.service;
 
 import com.poscoict.rollin.paper.model.PaperDto;
+import com.poscoict.rollin.paper.model.PaperEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PaperService {
-    List<PaperDto> getAllPaper();
+    List<PaperEntity> getAllPaper();
 
-    List<PaperDto> getPaperById(PaperDto paperDTO);
-    Integer postPaper(PaperDto paperDTO);
+    Optional<PaperEntity> getPaperById(Integer id);
+    Boolean postPaper(PaperEntity paperEntity);
 }

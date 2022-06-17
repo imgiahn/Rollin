@@ -109,7 +109,7 @@ export const giftsSlice = createSlice({
     requestSort: (state: giftState, action: PayloadAction<any>) => {
       console.log("sort");
     },
-    updateView: (state) => {
+    updateView: (state: giftState, action: PayloadAction<any>) => {
       console.log("view+1");
     },
     load2: (state: giftState, action: PayloadAction<number>) => {

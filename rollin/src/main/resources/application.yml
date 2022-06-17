@@ -23,7 +23,8 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddl-auto: update
-    show-sql: 'false'
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: 'true'
   mail:
     # gmail-smtp 사용
     default-encoding: UTF-8
@@ -43,4 +44,7 @@ spring:
     protocol: smtp
 mybatis:
   config-location: classpath:config/MyBatis.xml
+jwt:
+  secret_key: SECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEY
+  expTime : 86400000
 

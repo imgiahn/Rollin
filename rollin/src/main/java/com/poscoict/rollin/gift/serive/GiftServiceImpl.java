@@ -52,12 +52,10 @@ public class GiftServiceImpl implements GiftService {
         log.info(String.valueOf(gift));
         return gift;
     }
-
     @Override
-    public GiftDto getGiftById(Integer id) {
-        return giftMapper.getGiftById(id);
+    public Optional<GiftEntity> getGiftById(Integer id) {
+        return giftRepository.findById(id);
     }
-
     @Override
     public Boolean insertGiftInPaperAndUpdateGiftCount(PaperEntity paperEntity) {
 

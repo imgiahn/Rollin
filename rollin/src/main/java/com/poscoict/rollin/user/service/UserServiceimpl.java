@@ -1,11 +1,14 @@
 package com.poscoict.rollin.user.service;
 
 import com.poscoict.rollin.user.model.UserDto;
+import com.poscoict.rollin.user.model.UserEntity;
 import com.poscoict.rollin.user.repo.UserMapper;
+import com.poscoict.rollin.user.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceimpl implements UserService {
@@ -13,39 +16,47 @@ public class UserServiceimpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    UserRepository userRepository;
+
     @Override
-    public List<UserDto> getAllUser() {
-        return userMapper.getAllUser();
+    public List<UserEntity> getAllUser() {
+        return userRepository.findAll();
     }
 
     @Override
-    public Integer insertUser(UserDto userDTO) {
-        return userMapper.insertUser(userDTO);
+    public Boolean insertUser(UserEntity userEntity) {
+        UserEntity new_user=userRepository.save(userEntity);
+        if(new_user.getId()!=null){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override
-    public Integer idCheck(UserDto userDto) {
-        return userMapper.idCheck(userDto);
+    public long idCheck(UserEntity userEntity) {
+        return userRepository.countByUserId(userEntity.getUserId());
     }
 
     @Override
-    public List<UserDto> LoginCheck(UserDto userDto) {
-        return userMapper.LoginCheck(userDto);
+    public Optional<UserEntity> LoginCheck(UserEntity userEntity) {
+        return userRepository.findByUserIdAndPassword(userEntity.getUserId(), userEntity.getPassword());
     }
 
     @Override
-    public List<UserDto> getUserById(UserDto userDto) {
-        return userMapper.getUserById(userDto);
+    public Optional<UserEntity> getUserById(Integer id) {
+        return userRepository.findById(id);
     }
 
     @Override
-    public List<UserDto> kaoCheck(UserDto userDto) {
-        return userMapper.kaoCheck(userDto);
+    public List<UserEntity> kaoCheck(UserEntity userEntity) {
+        return userRepository.findByUserId(userEntity.getUserId());
     }
 
     @Override
-    public UserDto serviceLogin(UserDto userDto){
-        return userMapper.serviceLogin(userDto);
+    public Optional<UserEntity> serviceLogin(UserEntity userEntity){
+        return userRepository.findByUserIdAndPassword(userEntity.getUserId(), userEntity.getPassword());
     }
 
 

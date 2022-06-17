@@ -98,13 +98,16 @@ export const giftsSlice = createSlice({
     },
     load3: (state: giftState, action: PayloadAction<string>) => {},
     selectGiftByKey: (state: giftState, action: PayloadAction<any>) => {
-      console.log("gifts.js 안의 selectGfitByKey, action.payload:", action.payload);
+      console.log(
+        "gifts.js 안의 selectGfitByKey, action.payload:",
+        action.payload
+      );
       state.detailGift.gift = action.payload.data;
     },
-    selectReceivers: (state: giftState, action: PayloadAction<any>) => {
-      console.log(action.payload);
-      state.receiversInfo.receivers = action.payload.data;
-    },
+    // selectReceivers: (state: giftState, action: PayloadAction<any>) => {
+    //   console.log(action.payload);
+    //   state.receiversInfo.receivers = action.payload.data;
+    // },
     insertGift: (state: giftState, action: PayloadAction<any>) => {
       console.log("insertGift, action.payload: ", action.payload);
     },
@@ -162,8 +165,16 @@ export const giftsSlice = createSlice({
   // },
 });
 
-export const { selectAllGifts, load2, load3, selectGiftByKey, selectReceivers, insertGift, insertGiftFail, requestSort, requestGetGiftName, 
+export const {
+  selectAllGifts,
+  load2,
+  load3,
+  selectGiftByKey,
+  insertGift,
+  insertGiftFail,
+  requestSort,
+  requestGetGiftName,
   postEmail,
-  postEmailFail, } =
-  giftsSlice.actions;
+  postEmailFail,
+} = giftsSlice.actions;
 export default giftsSlice.reducer;

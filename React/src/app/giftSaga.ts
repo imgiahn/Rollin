@@ -5,7 +5,6 @@ import { user } from "./users";
 import {
   selectAllGifts,
   selectGiftByKey,
-  selectReceivers,
   insertGift,
   insertGiftFail,
   load2,
@@ -103,22 +102,22 @@ function* handleSelectGiftByKey(data: { payload: any }) {
   }
 }
 
-function* handleSelectReceivers(data: { payload: any }) {
-  try {
-    // const userId = yield select((state) => state.user.me.uid);
-    const userId = data.payload;
-    const receivers: Array<user> = yield call(
-      defaultAxios,
-      `/gift/receiver/${userId}`,
-      "get",
-      undefined
-    );
-    console.log("handleSelectReceivers, receivers:", receivers);
-    yield put(selectReceivers(receivers));
-  } catch (error) {
-    console.error(error);
-  }
-}
+// function* handleSelectReceivers(data: { payload: any }) {
+//   try {
+//     // const userId = yield select((state) => state.user.me.uid);
+//     const userId = data.payload;
+//     const receivers: Array<user> = yield call(
+//       defaultAxios,
+//       `/gift/receiver/${userId}`,
+//       "get",
+//       undefined
+//     );
+//     console.log("handleSelectReceivers, receivers:", receivers);
+//     yield put(selectReceivers(receivers));
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
 function* postGift(data: { payload: any }) {
   try {
@@ -157,7 +156,7 @@ export function* watchGetGifts() {
   yield takeLatest(requestGetGiftName, handleSearchGifts);
   yield takeLatest(requestSort, handleSortGift);
   yield takeLatest(load2, handleSelectGiftByKey);
-  yield takeLatest(load3, handleSelectReceivers);
+  // yield takeLatest(load3, handleSelectReceivers);
   yield takeLatest(insertGift, postGift);
   yield takeLatest(updateView, handleGiftsView);
   yield takeLatest(postEmail, sendEmail);

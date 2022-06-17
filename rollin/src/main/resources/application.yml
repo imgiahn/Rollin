@@ -39,7 +39,7 @@ spring:
         smtp :
           auth : true
           starttls :
-            enable : tr`ue
+            enable : true
             required : true
     protocol: smtp
 mybatis:
@@ -48,3 +48,17 @@ jwt:
   secret_key: SECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEY
   expTime : 86400000
 
+jwt:
+  secret_key: SECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEYSECRET_KEY
+  expTime : 86400000
+
+jpa:
+  properties:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQLInnoDBDialect
+      format_sql: 'true'
+  database-platform: org.hibernate.dialect.MySQL5Dialect
+  hibernate:
+    ddl-auto: update
+    naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  show-sql: 'true'

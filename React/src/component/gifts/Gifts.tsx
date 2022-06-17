@@ -29,8 +29,11 @@ const Gifts: FunctionComponent<SendProps> = (props: SendProps) => {
   };
   const onClickImg = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     dispatch(load2(Number.parseInt(e.currentTarget.id)));
-    dispatch(load3(myId));
+
     dispatch(updateView(Number.parseInt(e.currentTarget.id)));
+
+    // dispatch(load3(myId));
+
     navigate("/detailGift");
   };
 
@@ -42,9 +45,19 @@ const Gifts: FunctionComponent<SendProps> = (props: SendProps) => {
         </div>
         <div className="container">
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <form className="container" role="search" onSubmit={(e) => onSubmitSearch(e)}>
+            <form
+              className="container"
+              role="search"
+              onSubmit={(e) => onSubmitSearch(e)}
+            >
               <div className="row">
-                <input type="text" className="form-control col" placeholder="Search..." name="name" onChange={(e) => setSearchKey(e.target.value)}></input>
+                <input
+                  type="text"
+                  className="form-control col"
+                  placeholder="Search..."
+                  name="name"
+                  onChange={(e) => setSearchKey(e.target.value)}
+                ></input>
                 <button type="submit" className="btn btn-primary col-1">
                   검색
                 </button>
@@ -55,7 +68,11 @@ const Gifts: FunctionComponent<SendProps> = (props: SendProps) => {
         </div>
         <div className="container">
           <div className="row">
-            <select className="form-select" value={sortKey} onChange={(e) => setSortKey(e.target.value)}>
+            <select
+              className="form-select"
+              value={sortKey}
+              onChange={(e) => setSortKey(e.target.value)}
+            >
               <option value="default">정렬</option>
               <option value="count">구매순</option>
               <option value="view">조회순</option>
@@ -79,7 +96,9 @@ const Gifts: FunctionComponent<SendProps> = (props: SendProps) => {
                 // view={gift.views}
                 onClick={(e) => onClickImg(e)}
               ></img>
-              <figcaption className="figure-caption text-center">{gift.name}</figcaption>
+              <figcaption className="figure-caption text-center">
+                {gift.name}
+              </figcaption>
             </figure>
           ))}
         </div>

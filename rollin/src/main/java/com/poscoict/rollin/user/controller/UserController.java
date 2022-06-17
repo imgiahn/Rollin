@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+
 import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/user")
@@ -26,8 +28,10 @@ public class UserController {
 
     @Autowired
     SecurityService securityService;
+
     @Autowired
     UserEntity userEntity;
+
 
 
     @GetMapping
@@ -44,6 +48,13 @@ public class UserController {
     public Optional<UserEntity> getUserByMe(){
         Integer id=Integer.valueOf(securityService.getIdAtToken());
         return userService.getUserById(id);
+    }
+
+    @GetMapping("/me")
+    @TokenRequired
+    public List<UserDto> getUserByMe(){
+        userDto.setId(Integer.valueOf(securityService.getIdAtToken()));
+        return userService.getUserById(userDto);
     }
     @PostMapping
     public Boolean insert(@RequestBody UserEntity userEntity){
@@ -67,6 +78,7 @@ public class UserController {
     }
 
     @PostMapping("/Login")
+
     public Optional<UserEntity> loginUser(@RequestBody UserEntity userEntity){
         Optional<UserEntity> returnUser =userService.serviceLogin(userEntity); //쿼리 입력 후 결과값
         returnUser.ifPresent(selectUser->{
@@ -84,6 +96,21 @@ public class UserController {
 
 
 
+// =======
+//     public LoginDto loginUser(@RequestBody UserDto userDto){
+//         UserDto returnDto =userService.serviceLogin(userDto); //쿼리 입력 후 결과값
+//         LoginDto loginDto = new LoginDto();
+//         loginDto.setUserId(returnDto.getUserId());
+//         loginDto.setId(returnDto.getId());
+//         loginDto.setName(returnDto.getName()); //반값으로 형성된 곳에 하나씩 채워진다.
+//         loginDto.setImg(returnDto.getImg());
+//         loginDto.setPcnt(returnDto.getPcnt());
+// //        loginDto.setToken(returnDto.getToken());
+//         String token = securityService.createToken(returnDto.getId().toString()); //받아온 값을 셋토큰에 넣어준다.
+//         loginDto.setToken(token);
+
+//         return loginDto;
+// >>>>>>> gift
         //리액트에 던져준다
     }
 

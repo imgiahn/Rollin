@@ -59,6 +59,12 @@ public class UserServiceimpl implements UserService {
         return userRepository.findByUserIdAndPassword(userEntity.getUserId(), userEntity.getPassword());
     }
 
+    @Override
+    public UserDto serviceLogin(UserDto userDto){
+        return userMapper.serviceLogin(userDto);
+    }
+
+
 
 
 }

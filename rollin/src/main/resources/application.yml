@@ -24,6 +24,23 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: 'false'
+  mail:
+    # gmail-smtp 사용
+    default-encoding: UTF-8
+    host : smtp.gmail.com
+    port : 587
+    # gmail 계정
+    username : gudwodjssl2@gmail.com
+    # 앱 비밀번호
+    password : buqtbvyoiijwrhsz
+    properties :
+      mail :
+        smtp :
+          auth : true
+          starttls :
+            enable : tr`ue
+            required : true
+    protocol: smtp
 mybatis:
   config-location: classpath:config/MyBatis.xml
 

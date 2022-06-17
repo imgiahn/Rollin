@@ -102,6 +102,6 @@ export function* watchGetGifts() {
   yield takeLatest(requestGetGiftName, handleSearchGifts);
   yield takeLatest(requestSort, handleSortGift);
   yield takeLatest(load2, handleSelectGiftByKey);
-  yield takeLatest(load3, handleSelectReceivers);
+  // yield takeLatest(load3, handleSelectReceivers);
   yield takeLatest(insertGift, postGift);
 }

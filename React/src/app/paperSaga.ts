@@ -42,7 +42,7 @@ function* handleGetGiftFromId(data: any) {
     console.log(data.payload);
     console.log(giftId);
     if (giftId !== 0 && giftId !== undefined) {
-      const myGift: AxiosResponse<any, any> = yield call(defaultAxios, `/gift/${giftId}`, null);
+      const myGift: AxiosResponse<any, any> = yield call(defaultAxios, `/gift/${giftId}`, "get", undefined);
       yield put(getGiftFromId(myGift.data));
     }
   } catch (error: any) {

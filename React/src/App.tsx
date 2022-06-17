@@ -8,7 +8,6 @@ import SendBody from "./component/profile/SendBody";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import GiftDetail from "./component/gifts/GiftDetail";
-import Gifts from "./component/gifts/Gifts";
 import AuthRouter from "./component/AuthRouter";
 import Auth from "./app/Auth";
 import Profile2 from "./component/front/Profile2";

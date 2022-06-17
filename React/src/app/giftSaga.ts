@@ -10,13 +10,12 @@ function* handleSearchGifts(data: PayloadAction<string>) {
   try {
     console.log("search start");
     const giftName = data.payload;
-    let gifts: Array<gift>;
+    let gifts: AxiosResponse<any, any>;
     if (giftName === undefined || giftName === "") {
-      console.log(giftName);
-      gifts = yield call(defaultAxios, "/gift/", "get"); //call은 주어진 함수를 실행한다
+      gifts = yield call(defaultAxios, "/gift/", "get", undefined); //call은 주어진 함수를 실행한다
     } else {
       console.log(giftName);
-      gifts = yield call(defaultAxios, `/gift/search/${giftName}`, "get");
+      gifts = yield call(defaultAxios, `/gift/search/${giftName}`, "get", undefined);
     }
     yield put(selectAllGifts(gifts)); //put은 특정 액션을 dispatch한다
   } catch (error) {
@@ -28,7 +27,7 @@ function* handleSortGift(data: { payload: { sortKey: any } }) {
   try {
     console.log("sort start");
     const sortKey = data.payload.sortKey;
-    const allGifts: AxiosResponse<any, any> = yield call(defaultAxios, "/gift/", "get");
+    const allGifts: AxiosResponse<any, any> = yield call(defaultAxios, "/gift/", "get", undefined);
     console.log(allGifts, sortKey);
     const gifts = allGifts.data.slice();
     if (sortKey === "default") {
@@ -67,7 +66,7 @@ function* handleSelectGiftByKey(data: { payload: any }) {
     console.log("handleSelectGiftByKey, data.payload: ", data.payload);
     const giftId = data.payload;
     // console.log("handleSelectGiftByKey, giftId:", giftId);
-    const giftByKey: gift = yield call(defaultAxios, `/gift/${giftId}`, "get");
+    const giftByKey: gift = yield call(defaultAxios, `/gift/${giftId}`, "get", undefined);
     console.log("handleSelectGiftByKey, giftByKey: ", giftByKey);
     yield put(selectGiftByKey(giftByKey));
   } catch (error) {
@@ -79,7 +78,7 @@ function* handleSelectReceivers(data: { payload: any }) {
   try {
     // const userId = yield select((state) => state.user.me.uid);
     const userId = data.payload;
-    const receivers: Array<user> = yield call(defaultAxios, `/gift/receiver/${userId}`, "get");
+    const receivers: Array<user> = yield call(defaultAxios, `/gift/receiver/${userId}`, "get", undefined);
     console.log("handleSelectReceivers, receivers:", receivers);
     yield put(selectReceivers(receivers));
   } catch (error) {

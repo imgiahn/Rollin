@@ -6,7 +6,7 @@ import { AxiosResponse } from "axios";
 
 function* getUser() {
   try {
-    const response: AxiosResponse<any, any> = yield call(defaultAxios, "user", "get");
+    const response: AxiosResponse<any, any> = yield call(defaultAxios, "user", "get", undefined);
     yield put(getUsers(response.data));
   } catch (error) {
     console.error(error);
@@ -58,7 +58,7 @@ function* LoginCheck(data: any) {
 function* handleCheckLogin() {
   try {
     const myId = localStorage.getItem("loginUser");
-    const response: AxiosResponse<any, any> = yield call(defaultAxios, `/user/${myId}`, "get");
+    const response: AxiosResponse<any, any> = yield call(defaultAxios, `/user/${myId}`, "get", undefined);
     yield put(getUserById({ ...response.data[0], id: Number(myId) }));
     yield put(login(true));
   } catch (error: any) {

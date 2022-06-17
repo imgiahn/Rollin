@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { user } from "./users";
-import { paper } from "./paper";
 export type gift = {
   id: number;
   price?: number;
@@ -84,7 +83,7 @@ export const giftsSlice = createSlice({
   name: "gifts",
   initialState,
   reducers: {
-    selectAllGifts: (state: giftState, action: PayloadAction<Array<gift>>) => {
+    selectAllGifts: (state: giftState, action: PayloadAction<any>) => {
       console.log(action.payload);
       state.allGifts = action.payload;
     },

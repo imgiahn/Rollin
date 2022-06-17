@@ -1,15 +1,14 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { APIload, APIload2 } from "../../app/Auths";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { APIload } from "../../app/Auths";
 const Profile2 = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(APIload("/v2/user/me"));
-    }, []);
+  useEffect(() => {
+    dispatch(APIload("/v2/user/me"));
+  }, []);
 
-    return <div>profile2</div>;
+  return <div>profile2</div>;
 };
 export default Profile2;
 

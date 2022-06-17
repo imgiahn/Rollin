@@ -33,7 +33,7 @@
     </select>
     <select id="getUserById" parameterType="UserDto" resultType="UserDto">
         SELECT
-            userId,name,img,pcnt
+            id,userId,name,img,pcnt
         FROM
             users
         WHERE

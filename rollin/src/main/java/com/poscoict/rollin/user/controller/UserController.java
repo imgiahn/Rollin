@@ -6,6 +6,7 @@ import com.poscoict.rollin.config.SecurityService;
 import com.poscoict.rollin.user.model.LoginDto;
 import com.poscoict.rollin.user.model.UserDto;
 import com.poscoict.rollin.user.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -32,6 +34,7 @@ public class UserController {
     @GetMapping("/{id}")
     public List<UserDto> getUserById(@PathVariable String id){
         userDto.setId(Integer.valueOf(id));
+
         return userService.getUserById(userDto);
     }
 

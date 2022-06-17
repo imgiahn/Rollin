@@ -11,20 +11,21 @@ const UserList = () => {
   const navigate = useNavigate();
   const user: userState = useSelector((state: RootState) => state.user);
   const paper: paperState = useSelector((state: RootState) => state.paper);
-  const myId = localStorage.getItem("loginUser");
   // useEffect(() => {
   //   dispatch(load7());
   // }, []);
   useEffect(() => {
     //console.log(myId, selectedUser.id);
     if (paper.selectedUser !== undefined) {
-      if (paper.selectedUser?.id === Number(myId)) {
+      console.log(user.me.id);
+      console.log(paper.selectedUser.id, user.me.id);
+      if (paper.selectedUser?.id === user.me.id) {
         navigate("/paper");
       } else {
         navigate("/add");
       }
     }
-  }, [paper.selectedUser, navigate, myId]);
+  }, [paper, navigate, user]);
   return (
     <>
       <AuthRouter />

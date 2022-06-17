@@ -6,11 +6,17 @@ import reportWebVitals from "./reportWebVitals";
 import createStore from "./app/store";
 
 const store = createStore();
-const container = document.getElementById("root");
+const container = document.getElementById("root")!;
 const root = createRoot(container);
+
 root.render(
   <Provider store={store}>
     <App />
   </Provider>
 );
+// root.render(
+//   <Provider store={store}>
+//     <App />
+//   </Provider>
+// );
 reportWebVitals();

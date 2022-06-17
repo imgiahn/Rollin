@@ -1,53 +1,55 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { giftAxios } from "../http/GiftAxios";
-import { selectAllGifts, selectGiftByKey, selectReceivers, insertGift, insertGiftFail, load2, load3, requestGetGiftName, requestSort } from "./gifts";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { defaultAxios } from "./AxiosApi";
+import { user } from "./users";
+import { selectAllGifts, selectGiftByKey, selectReceivers, insertGift, insertGiftFail, load2, load3, requestGetGiftName, requestSort, gift } from "./gifts";
 
 ////////액션
-
-function* handleSearchGifts(data) {
+import { AxiosResponse } from "axios";
+function* handleSearchGifts(data: PayloadAction<string>) {
   try {
     console.log("search start");
-    const giftName = data.payload.giftName;
-    let gift = "";
+    const giftName = data.payload;
+    let gifts: Array<gift>;
     if (giftName === undefined || giftName === "") {
       console.log(giftName);
-      gift = yield call(giftAxios, "/gift/", "get"); //call은 주어진 함수를 실행한다
+      gifts = yield call(defaultAxios, "/gift/", "get"); //call은 주어진 함수를 실행한다
     } else {
       console.log(giftName);
-      gift = yield call(giftAxios, `/gift/search/${giftName}`, "get");
+      gifts = yield call(defaultAxios, `/gift/search/${giftName}`, "get");
     }
-    yield put(selectAllGifts(gift)); //put은 특정 액션을 dispatch한다
+    yield put(selectAllGifts(gifts)); //put은 특정 액션을 dispatch한다
   } catch (error) {
     console.log(error);
   }
 }
 
-function* handleSortGift(data) {
+function* handleSortGift(data: { payload: { sortKey: any } }) {
   try {
     console.log("sort start");
     const sortKey = data.payload.sortKey;
-    const allGifts = yield call(giftAxios, "/gift/", "get");
+    const allGifts: AxiosResponse<any, any> = yield call(defaultAxios, "/gift/", "get");
     console.log(allGifts, sortKey);
-    const gifts = allGifts.slice();
+    const gifts = allGifts.data.slice();
     if (sortKey === "default") {
       console.log("no sort");
     } else if (sortKey === "count") {
-      gifts.sort(function (a, b) {
+      gifts.sort(function (a: { count: number }, b: { count: number }) {
         return b.count - a.count;
       });
       console.log("sort by count");
     } else if (sortKey === "view") {
-      gifts.sort(function (a, b) {
+      gifts.sort(function (a: { views: number }, b: { views: number }) {
         return b.views - a.views;
       });
       console.log("sort by view");
     } else if (sortKey === "lprice") {
-      gifts.sort(function (a, b) {
+      gifts.sort(function (a: { price: number }, b: { price: number }) {
         return a.price - b.price;
       });
       console.log("sort by lprice");
     } else if (sortKey === "hprice") {
-      gifts.sort(function (a, b) {
+      gifts.sort(function (a: { price: number }, b: { price: number }) {
         return b.price - a.price;
       });
       console.log("sort by hprice");
@@ -58,14 +60,14 @@ function* handleSortGift(data) {
   }
 }
 
-function* handleSelectGiftByKey(data) {
+function* handleSelectGiftByKey(data: { payload: any }) {
   try {
     // const giftId = yield select((state) => state.gifts.giftId);
     console.log("handleSelectGiftByKey, data: ", data);
     console.log("handleSelectGiftByKey, data.payload: ", data.payload);
     const giftId = data.payload;
     // console.log("handleSelectGiftByKey, giftId:", giftId);
-    const giftByKey = yield call(giftAxios, `/gift/${giftId}`, "get");
+    const giftByKey: gift = yield call(defaultAxios, `/gift/${giftId}`, "get");
     console.log("handleSelectGiftByKey, giftByKey: ", giftByKey);
     yield put(selectGiftByKey(giftByKey));
   } catch (error) {
@@ -73,11 +75,11 @@ function* handleSelectGiftByKey(data) {
   }
 }
 
-function* handleSelectReceivers(data) {
+function* handleSelectReceivers(data: { payload: any }) {
   try {
     // const userId = yield select((state) => state.user.me.uid);
     const userId = data.payload;
-    const receivers = yield call(giftAxios, `/gift/receiver/${userId}`, "get");
+    const receivers: Array<user> = yield call(defaultAxios, `/gift/receiver/${userId}`, "get");
     console.log("handleSelectReceivers, receivers:", receivers);
     yield put(selectReceivers(receivers));
   } catch (error) {
@@ -85,13 +87,13 @@ function* handleSelectReceivers(data) {
   }
 }
 
-function* postGift(data) {
+function* postGift(data: { payload: any }) {
   try {
     console.log("postGift, data:", data);
     console.log("postGift, data.payload", data.payload);
-    yield call(giftAxios, "/gift", "post", data.payload);
+    yield call(defaultAxios, "/gift", "post", data.payload);
     alert("선물을 보냈습니다");
-  } catch (error) {
+  } catch (error: any) {
     yield put(insertGiftFail(error));
     console.error(error);
   }

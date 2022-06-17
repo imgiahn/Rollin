@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { insertGift } from "../../app/gifts";
-import { IMG_PATH } from "../../http/GiftAxios";
+import { IMG_PATH } from "../../app/AxiosApi";
 import { Form, Input, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
@@ -13,7 +13,12 @@ const GiftDetail = () => {
 
   const onSubmit = () => {
     console.log("onSubmit, form:", form);
-    dispatch(insertGift({ ...form, id: detailGift.gift.id }));
+    dispatch(
+      insertGift({
+        ...form,
+        giftId: detailGift.gift.id,
+      })
+    );
     navigate("/profile");
   };
 

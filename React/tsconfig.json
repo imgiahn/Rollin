@@ -6,6 +6,8 @@
     "strict": true,
     "strictNullChecks": false,
     "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "jsx": "react",

@@ -9,10 +9,6 @@ function* getKakaoAPI(data) {
         const data2 = yield window.Kakao.API.request({
             url: data.payload,
         });
-        console.log(data2.id);
-        console.log(data2.id);
-        console.log(data2.properties.nickname);
-        console.log(data2.properties.profile_image);
 
         yield put(putAPI(data2));
         const response = yield call(defaultAxios, "/user/kaologin", "post", {
@@ -22,7 +18,7 @@ function* getKakaoAPI(data) {
         if (response.data.length > 0) {
             yield put(putKaokaoID(response.data[0]));
             localStorage.setItem("loginUser", response.data[0].id);
-            window.location.href = "profile";
+            //window.location.href = "profile";
         } else {
             yield call(defaultAxios, "/user", "post", {
                 userId: data2.id,
@@ -34,7 +30,7 @@ function* getKakaoAPI(data) {
                 userId: data2.id,
             });
             localStorage.setItem("loginUser", response.data[0].id);
-            window.location.href = "profile";
+            //window.location.href = "profile";
         }
     } catch (error) {
         console.log(error);

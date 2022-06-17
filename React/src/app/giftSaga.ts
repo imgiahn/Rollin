@@ -11,6 +11,7 @@ import {
   load3,
   requestGetGiftName,
   requestSort,
+  updateView,
   postEmailFail,
   postEmail,
   gift,
@@ -129,6 +130,15 @@ function* postGift(data: { payload: any }) {
     console.error(error);
   }
 }
+function* handleGiftsView(data: { payload: any }) {
+  try {
+    const id = data.payload.id;
+    console.log("view id:", id);
+    yield call(defaultAxios, `/gift/${id}`, "put",undefined);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 function* sendEmail(data: { payload: any }) {
   try {
@@ -148,5 +158,6 @@ export function* watchGetGifts() {
   yield takeLatest(load2, handleSelectGiftByKey);
   // yield takeLatest(load3, handleSelectReceivers);
   yield takeLatest(insertGift, postGift);
+  yield takeLatest(updateView, handleGiftsView);
   yield takeLatest(postEmail, sendEmail);
 }

@@ -59,6 +59,22 @@ const initialState: giftState = {
 //     return receivers;
 //   }
 // );
+// export const selectGiftByKey = createAsyncThunk(
+//   SELECT_GIFT_BY_KEY,
+//   async (payload) => {
+//     const gift = await getGiftById(Number(1));
+//     return gift;
+//   }
+// );
+
+// // 로그인한 user id가 아닌 사람들 name 가져오기
+// export const selectReceivers = createAsyncThunk(
+//   SELECT_RECEIVERS_BY_KEY,
+//   async (payload) => {
+//     const receivers = await getReceiverNamesNotUserId(Number(1));
+//     return receivers;
+//   }
+// );
 
 // export const selectAllgifts = createAsyncThunk(SELECT_ALL_GIFTS, async () => {
 //   return await giftsApi();
@@ -92,6 +108,9 @@ export const giftsSlice = createSlice({
     },
     requestSort: (state: giftState, action: PayloadAction<any>) => {
       console.log("sort");
+    },
+    updateView: (state: giftState, action: PayloadAction<any>) => {
+      console.log("view+1");
     },
     load2: (state: giftState, action: PayloadAction<number>) => {
       state.giftId = action.payload;
@@ -165,6 +184,7 @@ export const giftsSlice = createSlice({
   // },
 });
 
+
 export const {
   selectAllGifts,
   load2,
@@ -176,5 +196,7 @@ export const {
   requestGetGiftName,
   postEmail,
   postEmailFail,
+  updateView,
 } = giftsSlice.actions;
+
 export default giftsSlice.reducer;

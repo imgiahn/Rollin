@@ -17,4 +17,7 @@ public interface UserService {
     List<UserDto> LoginCheck(UserDto userDto);
 
     List<UserDto> getUserById(UserDto userDto);
+
+    List<UserDto> kaoCheck(UserDto userDto);
+
 }

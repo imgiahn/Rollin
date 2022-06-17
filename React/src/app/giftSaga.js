@@ -1,21 +1,6 @@
-import { call, put, select, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import { giftAxios } from "../http/GiftAxios";
-import { defaultAxios } from "./AxiosApi";
-import {
-  selectAllGifts,
-  load,
-  getGiftByIdSaga,
-  getGiftByIdFails,
-  requestGetGift,
-  selectGiftByKey,
-  selectReceivers,
-  insertGift,
-  insertGiftFail,
-  load2,
-  load3,
-  requestGetGiftName,
-  requestSort,
-} from "./gifts";
+import { selectAllGifts, selectGiftByKey, selectReceivers, insertGift, insertGiftFail, load2, load3, requestGetGiftName, requestSort } from "./gifts";
 
 ////////액션
 

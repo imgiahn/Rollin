@@ -3,10 +3,15 @@
     "allowJs": true,
     "target": "ES6",
     "outDir": "./dist",
+    "strict": true,
+    "strictNullChecks": false,
+    "skipLibCheck": true,
     "moduleResolution": "Node",
     "esModuleInterop": true,
-    "jsx": "preserve"
+    "jsx": "react",
+    "lib": ["ES6", "DOM", "DOM.Iterable"]
   },
+  "lib": ["react-redux", "react-modal"],
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

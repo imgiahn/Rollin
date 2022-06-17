@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Front from "./component/front/Front";
 // import Main from "./component/main/Main";
 // import ProfileMain from "./component/profile/ProfileMain";
@@ -13,11 +12,10 @@ import Gifts from "./app/gifts";
 import AuthRouter from "./component/AuthRouter";
 import Auth from "./app/Auth";
 import Profile2 from "./component/front/Profile2";
-import Login from "./component/front/Login";
 function App() {
     // const page = useSelector((state) => state.page);
     return (
-        <div className="App">
+        <div className={App}>
             <header className="App-header"></header>
             <BrowserRouter>
                 <Routes>

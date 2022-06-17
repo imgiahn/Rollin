@@ -1,23 +1,26 @@
 export const Users = [
   {
-    uid: 0,
+    id: 0,
     name: "park",
-    id: "park",
+    userId: "park",
     img: "/img/profile/1.jpeg",
     password: "1234",
+    pcnt: "0",
   },
   {
-    uid: 1,
+    id: 1,
     name: "seo",
-    id: "seo",
+    userId: "seo",
     img: "/img/profile/2.jpeg",
     password: "1234",
+    pcnt: "0",
   },
   {
-    uid: 2,
+    id: 2,
     name: "lee",
-    id: "lee",
+    userId: "lee",
     img: "/img/profile/3.jpeg",
     password: "1234",
+    pcnt: "0",
   },
 ];

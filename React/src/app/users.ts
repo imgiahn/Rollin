@@ -1,0 +1,66 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Users } from "../data/User";
+
+export type user = {
+  id: number;
+  userId: string;
+  password?: string;
+  name: string;
+  img: string;
+  pcnt?: string;
+} | null;
+export type userState = {
+  users: Array<user>;
+  isLogin: boolean;
+  check: number;
+  me: user;
+};
+const initialState: userState = {
+  users: Users,
+  isLogin: false,
+  check: 0,
+  me: null,
+};
+
+const userSlice = createSlice({
+  name: "users",
+  initialState,
+  reducers: {
+    login: (state: userState, action: PayloadAction<boolean>) => {
+      state.isLogin = action.payload;
+    },
+    load3: (state: userState, action: PayloadAction<Object>) => {
+      console.log(action.payload);
+    },
+    load4: (state: userState, action: PayloadAction) => {
+      console.log(action.payload);
+    },
+    load7: (state: userState, action: PayloadAction<Object>) => {
+      console.log(action.payload);
+    },
+    load5: (state: userState, action: PayloadAction<number>) => {
+      state.check = action.payload;
+    },
+    getUsers: (state: userState, action: PayloadAction<Array<user>>) => {
+      state.users = action.payload;
+    },
+    getUserById: (state: userState, action: PayloadAction<user>) => {
+      state.me = action.payload;
+    },
+    fistload: (state: userState, action: PayloadAction) => {
+      state.check = 0;
+    },
+    checkLogin: (state: userState, action: PayloadAction) => {
+      console.log("check login...");
+    },
+    // getUsers: (state, action) => {
+    //   state.value = action.payload;
+    // },
+    // selectUserById: (state, action) => {
+    //   state.value = action.payload;
+    // },
+  },
+  extraReducers: {},
+});
+export const { login, getUsers, load3, load4, load5, getUserById, load7, fistload, checkLogin } = userSlice.actions;
+export default userSlice.reducer;

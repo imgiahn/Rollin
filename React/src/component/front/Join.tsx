@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { fistload, load3, load5 } from "../../app/users";
 import { FrontProps } from "./Front";
+import "./gi.css";
 
 const Regi: FunctionComponent<FrontProps> = (props) => {
   const dispatch = useDispatch();
@@ -38,8 +39,11 @@ const Regi: FunctionComponent<FrontProps> = (props) => {
   };
 
   return (
-    <div className="container w-25">
+    <div className="App">
       <form method="POST" action="" name="frm">
+        <img src="img/letter.png" alt="hi" className="img2"></img>
+        <h1> Lollin</h1>
+
         <div className="row form-floating mb-3">
           <input className="form-control" type="text" name="userId" placeholder="id" />
           <label htmlFor="id">ID </label>
@@ -49,14 +53,14 @@ const Regi: FunctionComponent<FrontProps> = (props) => {
           <label htmlFor="password">Password </label>
         </div>
         <div className="row form-floating mb-3">
-          <input className="form-control" type="text" name="username" placeholder="name" />
+          <input className="form-control" type="text" name="name" placeholder="name" />
           <label htmlFor="name">Name </label>
         </div>
         <div className="row">
-          <input className="btn btn-outline-primary" type="button" onClick={() => makeSubmit()} value="회원가입" />
+          <input className="btn lobutton" type="button" onClick={() => makeSubmit()} value="회원가입" />
           <div className="form-text">
             이미 아이디가 있으신까요?{" "}
-            <button className="btn btn-sm btn-link" type="button" onClick={() => props.setPageSet("login")}>
+            <button className="btn lobutton" type="button" onClick={() => props.setPageSet("login")}>
               로그인
             </button>
           </div>

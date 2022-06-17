@@ -1,24 +1,29 @@
 package com.poscoict.rollin.user.service;
 
 import com.poscoict.rollin.user.model.UserDto;
+import com.poscoict.rollin.user.model.UserEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface UserService {
 
-    List<UserDto> getAllUser();
+    List<UserEntity> getAllUser();
 
-    Integer insertUser(UserDto userDTO);
+    Boolean insertUser(UserEntity userEntity);
 
-    Integer idCheck(UserDto userDto);
+    long idCheck(UserEntity userEntity);
 
-    List<UserDto> LoginCheck(UserDto userDto);
+    Optional<UserEntity> LoginCheck(UserEntity userEntity);
 
-    List<UserDto> getUserById(UserDto userDto);
+    Optional<UserEntity> getUserById(Integer id);
 
-    List<UserDto> kaoCheck(UserDto userDto);
+    List<UserEntity> kaoCheck(UserEntity userEntity);
 
-    UserDto serviceLogin(UserDto userDto);
+
+    Optional<UserEntity> serviceLogin(UserEntity userEntity);
+
+
 }

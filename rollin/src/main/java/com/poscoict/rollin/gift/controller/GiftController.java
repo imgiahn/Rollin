@@ -61,7 +61,7 @@ public class GiftController {
     // => 프론트에서  userId, nickname, content (Body에), giftId 받아와서 등록하기
     @PostMapping("")
     public ResponseEntity<?> postGift(@RequestBody PaperDto paperDto){
-        log.info(paperDto.toString());
+        //log.info(paperDto.toString());
         HttpStatus httpStatus;
         if(giftService.insertGift(paperDto)==1){
             httpStatus = giftService.updateGiftCount(paperDto.getGiftId())==1

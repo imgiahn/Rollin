@@ -48,5 +48,16 @@
         userId=#{userId} and password = #{password}
     </select>
 
+    <select id="kaoCheck" resultType="UserDto" parameterType="UserDto">
+        SELECT
+        id, userId, name
+        FROM
+        users
+        WHERE
+        userId=#{userId}
+    </select>
+
+
+
 
 </mapper>

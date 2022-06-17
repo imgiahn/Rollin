@@ -42,4 +42,9 @@ public class UserController {
     public List<UserDto> LoginCheck(@RequestBody  UserDto userDto){
         return userService.LoginCheck(userDto);
     }
+
+    @PostMapping("/kaologin")
+    public List<UserDto> kaoCheck(@RequestBody UserDto userDto){
+        return userService.kaoCheck(userDto);
+    }
 }

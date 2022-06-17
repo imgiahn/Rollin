@@ -6,47 +6,47 @@ import { AxiosResponse } from "axios";
 
 function* getUser() {
     try {
-        const response = yield call(defaultAxios, "user", "get");
+        const response: AxiosResponse<any, any> = yield call(defaultAxios, "user", "get", undefined);
         yield put(getUsers(response.data));
     } catch (error) {
         console.error(error);
     }
 }
-function* postUser(data) {
+function* postUser(data: any) {
     try {
         console.log(data);
         console.log(data.payload);
         yield call(defaultAxios, "/user", "post", data.payload);
         alert("회원가입이 완료되었습니다");
-    } catch (error) {
+    } catch (error: any) {
         alert("아이디가 중복입니다 다시 가입해 주세요");
         yield put(getPapersFail(error));
         console.error(error);
     }
 }
 
-function* idCheck(data) {
+function* idCheck(data: any) {
     try {
         console.log("data.payload", data.payload);
-        const responser = yield call(defaultAxios, "/user/Id", "post", data.payload);
+        const responser: AxiosResponse<any, any> = yield call(defaultAxios, "/user/Id", "post", data.payload);
         yield put(load5(responser.data));
         // yield put(load4(responser.data));
-    } catch (error) {
+    } catch (error: any) {
         alert("아이디가 중복입니다");
         yield put(getPapersFail(error));
         console.error(error);
     }
 }
 
-function* LoginCheck(data) {
+function* LoginCheck(data: any) {
     try {
         // console.log('data.payload', data.payload);
-        const response = yield call(defaultAxios, "/user/Login", "post", data.payload);
+        const response: AxiosResponse<any, any> = yield call(defaultAxios, "/user/Login", "post", data.payload);
         yield put(getUserById(response.data.id));
         yield put(login(true));
         localStorage.setItem("loginUser", response.data.token);
         // yield put(load4(responser.data));
-    } catch (error) {
+    } catch (error: any) {
         alert("아이디랑 비밀번호를 확인해 주세요");
         yield put(getPapersFail(error));
         yield put(login(false));
@@ -56,7 +56,7 @@ function* LoginCheck(data) {
 function* handleCheckLogin() {
     try {
         const myToken = localStorage.getItem("loginUser");
-        const response = yield call(AuthAxios, "/user/me", "get", myToken);
+        const response: AxiosResponse<any, any> = yield call(AuthAxios, "/user/me", "get", myToken);
         yield put(getUserById(response.data));
         yield put(login(true));
     } catch (error) {

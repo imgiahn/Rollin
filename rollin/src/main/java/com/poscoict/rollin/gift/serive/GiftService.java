@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface GiftService {
     List<GiftEntity> findAllGift();
     List<GiftEntity> findGiftByName(String name);

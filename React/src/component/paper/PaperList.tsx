@@ -45,7 +45,7 @@ const PapersList: FunctionComponent<IProps> = (props: IProps) => {
                                 }}
                             >
                                 <figcaption className="figure-caption">from {paper.nickname}</figcaption>
-                                <img className="img-thumbnail col" alt={paper.nickname} title={paper.nickname} />
+                                <img className="img2" src="img/note.png" alt={paper.nickname} title={paper.nickname} />
                             </figure>
                         ))}
                     </div>

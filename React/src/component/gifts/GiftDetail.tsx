@@ -9,6 +9,7 @@ import "../front/gi.css";
 const GiftDetail = () => {
     const detailGift = useSelector((state: RootState) => state.gifts.detailGift);
     const receiversInfo = useSelector((state: RootState) => state.gifts.receiversInfo);
+    const receiver = useSelector((state: RootState) => state.paper.selectedUser);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -60,13 +61,8 @@ const GiftDetail = () => {
                 <Form>
                     닉네임 <Input type="text" name="nickname" id="nickname" onChange={(e) => onChangeNickName(e)}></Input>
                     <br></br>
-                    받는사람
-                    <Input type="select" name="receiver" id="receiverSelect" onChange={(e) => onChangeSelect(e)}>
-                        <option value="">받는 사람</option>
-                        {receiversInfo.receivers?.map((receiver, index) => (
-                            <option value={receiver.id}>{receiver.name}</option>
-                        ))}
-                    </Input>
+                    받는사람 : {receiver.name}
+                    <br></br>
                     <br />
                     메시지
                     <Input type="textarea" id="content" onChange={(e) => onChangeContent(e)} />

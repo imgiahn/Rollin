@@ -57,7 +57,10 @@
         userId=#{userId}
     </select>
 
-
-
+    <select id="serviceLogin" parameterType="UserDto" resultType="UserDto">
+        select id, userId, name, img
+        from users
+        where userId = #{userId} and password = #{password};
+    </select>
 
 </mapper>

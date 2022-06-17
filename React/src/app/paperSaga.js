@@ -1,5 +1,5 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { selectPaper, getPapers, getPapersFail, load, load2, requestGetGift, getGiftByIdFails, getGiftFromId } from "./paper";
+import { selectPaper, getPapers, getPapersFail, load, load2, requestGetGift, getGiftById, getGiftByIdFails, getGiftFromId } from "./paper";
 import { defaultAxios } from "./AxiosApi";
 
 function* postPaper(data) {

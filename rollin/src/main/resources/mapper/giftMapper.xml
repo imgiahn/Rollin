@@ -49,7 +49,7 @@
         WHERE id = #{id}
     </update>
 
-    <select id="findReceiverNotUserId" parameterType="Integer" resultType="UserDto">
+    <select id="findReceiverNotUserId" parameterType="Integer" resultType="UserDTO">
         SELECT
             id, name
         FROM

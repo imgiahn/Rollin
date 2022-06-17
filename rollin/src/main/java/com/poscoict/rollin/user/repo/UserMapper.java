@@ -20,4 +20,6 @@ public interface UserMapper {
     List<UserDto> getUserById(UserDto userDto);
 
     List<UserDto> kaoCheck(UserDto userDto);
+
+    UserDto serviceLogin(UserDto userDto);
 }

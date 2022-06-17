@@ -43,5 +43,11 @@ public class UserServiceimpl implements UserService {
         return userMapper.kaoCheck(userDto);
     }
 
+    @Override
+    public UserDto serviceLogin(UserDto userDto){
+        return userMapper.serviceLogin(userDto);
+    }
+
+
 
 }

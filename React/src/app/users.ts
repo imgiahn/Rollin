@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Users } from "../data/User";
 
 export type user = {
     id: number;
@@ -10,6 +9,7 @@ export type user = {
     pcnt?: string;
 } | null;
 export type userState = {
+<<<<<<< HEAD
     users: Array<user>;
     isLogin: boolean;
     check: number;
@@ -20,6 +20,18 @@ const initialState: userState = {
     isLogin: false,
     check: 0,
     me: null,
+=======
+  users?: Array<user>;
+  isLogin: boolean;
+  check: number;
+  me: user;
+};
+const initialState: userState = {
+  users: undefined,
+  isLogin: false,
+  check: 0,
+  me: null,
+>>>>>>> c0eccd00e065be8e5268a1eb376936e22fc4683f
 };
 
 const userSlice = createSlice({

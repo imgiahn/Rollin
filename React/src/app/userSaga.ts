@@ -2,6 +2,7 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import { getPapersFail, load2 } from "./paper";
 import { defaultAxios, AuthAxios } from "./AxiosApi";
 import { getUsers, getUserById, login, load3, load4, load5, load7, checkLogin } from "./users";
+import { AxiosResponse } from "axios";
 
 function* getUser() {
     try {

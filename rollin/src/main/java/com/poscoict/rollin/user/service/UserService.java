@@ -20,4 +20,5 @@ public interface UserService {
 
     List<UserDto> kaoCheck(UserDto userDto);
 
+    UserDto serviceLogin(UserDto userDto);
 }

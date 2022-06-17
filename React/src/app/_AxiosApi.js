@@ -1,8 +1,7 @@
 import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:8000";
-export const IMG_PATH = "http://localhost:8000";
-export const defaultAxios = async (url: any, method: any, data: any) => {
+export const defaultAxios = async (url, method, data) => {
     console.log(`url : ${url}`);
     return await axios({
         method,
@@ -11,7 +10,7 @@ export const defaultAxios = async (url: any, method: any, data: any) => {
         headers: { "Content-Type": "application/json" },
     });
 };
-export const AuthAxios = async (url: any, method: any, data: any) => {
+export const AuthAxios = async (url, method, data) => {
     console.log(`url : ${url}`);
     return await axios({
         method,

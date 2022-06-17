@@ -8,14 +8,14 @@ import SendBody from "./component/profile/SendBody";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import GiftDetail from "./component/gifts/GiftDetail";
-import Gifts from "./app/gifts";
+import Gifts from "./component/gifts/Gifts";
 import AuthRouter from "./component/AuthRouter";
 import Auth from "./app/Auth";
 import Profile2 from "./component/front/Profile2";
 function App() {
   // const page = useSelector((state) => state.page);
   return (
-    <div className={App}>
+    <div className={"App"}>
       <header className="App-header"></header>
       <BrowserRouter>
         <Routes>
@@ -48,7 +48,7 @@ function App() {
           ></Route>
           <Route path="/profile" element={<UserList />}></Route>
           <Route path="/add" element={<SendBody />}></Route>
-          <Route path="/gifts" element={<Gifts></Gifts>}></Route>
+          {/* <Route path="/gifts" element={<Gifts></Gifts>}></Route> */}
           <Route path="/detailGift" element={<GiftDetail></GiftDetail>}></Route>
         </Routes>
       </BrowserRouter>

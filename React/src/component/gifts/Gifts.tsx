@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { IMG_PATH } from "../../http/GiftAxios";
+import { IMG_PATH } from "../../app/AxiosApi";
 import { load2, load3 } from "../../app/gifts";
 import { requestGetGiftName, requestSort } from "../../app/gifts";
 import { RootState } from "../../app/store";
@@ -25,7 +25,7 @@ const Gifts: FunctionComponent<SendProps> = (props: SendProps) => {
   const onSubmitSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(searchKey);
-    dispatch(requestGetGiftName({ giftName: searchKey }));
+    dispatch(requestGetGiftName(searchKey));
   };
   const onClickImg = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     dispatch(load2(Number.parseInt(e.currentTarget.id)));

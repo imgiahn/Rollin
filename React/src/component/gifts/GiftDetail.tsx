@@ -5,12 +5,11 @@ import { IMG_PATH } from "../../app/AxiosApi";
 import { Form, Input, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
+import { select } from "../../app/paper";
 import "../front/gi.css";
 const GiftDetail = () => {
   const detailGift = useSelector((state: RootState) => state.gifts.detailGift);
-  const receiversInfo = useSelector(
-    (state: RootState) => state.gifts.receiversInfo
-  );
+  // const receiversInfo = useSelector((state: RootState) => state.gifts.receiversInfo);
   const receiver = useSelector((state: RootState) => state.paper.selectedUser);
   const me = useSelector((state: RootState) => state.user.me);
   const dispatch = useDispatch();
@@ -29,20 +28,26 @@ const GiftDetail = () => {
         message: receiver.name + "님에게 보낸 상품 내역입니다",
       })
     );
+    dispatch(select(undefined));
+    navigate("/profile");
+  };
+
+  const onCancle = () => {
+    dispatch(select(undefined));
     navigate("/profile");
   };
 
   const [form, setForm] = useState({
     nickname: "",
-    userId: 0,
+    userId: receiver.id,
     content: "",
   });
 
-  const onChangeSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    console.log("onChangeSelect, e.target.value:", value);
-    setForm({ ...form, userId: Number(value) });
-  };
+  // const onChangeSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { value } = e.target;
+  //   console.log("onChangeSelect, e.target.value:", value);
+  //   setForm({ ...form, userId: Number(value) });
+  // };
 
   const onChangeContent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -63,42 +68,22 @@ const GiftDetail = () => {
           <h1>선물 상세 페이지</h1>
         </div>
         <div className="detailGiftDesc">
-          <img
-            className="detailGiftImg"
-            key={detailGift.gift?.id}
-            src={`${IMG_PATH}${detailGift.gift?.img}`}
-            alt={detailGift.gift?.name}
-          ></img>
+          <img className="detailGiftImg" key={detailGift.gift?.id} src={`${IMG_PATH}${detailGift.gift?.img}`} alt={detailGift.gift?.name}></img>
           {detailGift.gift?.content}
         </div>
         <Form>
-          닉네임{" "}
-          <Input
-            type="text"
-            name="nickname"
-            id="nickname"
-            onChange={(e) => onChangeNickName(e)}
-          ></Input>
+          닉네임 <Input type="text" name="nickname" id="nickname" onChange={(e) => onChangeNickName(e)}></Input>
           <br></br>
           받는사람 : {receiver.name}
           <br></br>
           <br />
           메시지
-          <Input
-            type="textarea"
-            id="content"
-            onChange={(e) => onChangeContent(e)}
-          />
+          <Input type="textarea" id="content" onChange={(e) => onChangeContent(e)} />
           <br />
           <Button color="info" onClick={onSubmit}>
             선물하기
           </Button>
-          <Button
-            color="info"
-            onClick={() => {
-              navigate("/add");
-            }}
-          >
+          <Button color="info" onClick={onCancle}>
             취소
           </Button>
         </Form>

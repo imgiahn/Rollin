@@ -39,7 +39,7 @@ const Gifts: FunctionComponent<SendProps> = (props: SendProps) => {
 
   return (
     <div className="App">
-      <div>
+      <div className="box">
         <div className="row text-center">
           <h1>선물하기</h1>
         </div>
@@ -58,7 +58,8 @@ const Gifts: FunctionComponent<SendProps> = (props: SendProps) => {
         </div>
         <div className="container">
           <div className="row">
-            <select className="form-select" value={sortKey} onChange={(e) => setSortKey(e.target.value)}>
+            <h5 className="col-11">총상품개수 : {allGifts.length}</h5>
+            <select className="form-select col" value={sortKey} onChange={(e) => setSortKey(e.target.value)}>
               <option value="default">정렬</option>
               <option value="count">구매순</option>
               <option value="view">조회순</option>
@@ -67,6 +68,7 @@ const Gifts: FunctionComponent<SendProps> = (props: SendProps) => {
             </select>
           </div>
         </div>
+        <br></br>
         <div className="row row-cols-4">
           {allGifts?.map((gift, index) => (
             <figure key={index} className="figure">
@@ -76,6 +78,7 @@ const Gifts: FunctionComponent<SendProps> = (props: SendProps) => {
                 src={`${IMG_PATH}${gift.img}`}
                 alt={gift.name}
                 id={gift.id.toString()}
+                
                 // content={gift.content}
                 // count={gift.count}
                 // name={gift.name}

@@ -1,6 +1,5 @@
 package com.poscoict.rollin.user.service;
 
-import com.poscoict.rollin.user.model.UserDto;
 import com.poscoict.rollin.user.model.UserEntity;
 import org.springframework.stereotype.Service;
 

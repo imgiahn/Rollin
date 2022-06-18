@@ -3,8 +3,6 @@ package com.poscoict.rollin.user.controller;
 
 import com.poscoict.rollin.aspect.TokenRequired;
 import com.poscoict.rollin.config.SecurityService;
-import com.poscoict.rollin.user.model.LoginDto;
-import com.poscoict.rollin.user.model.UserDto;
 import com.poscoict.rollin.user.model.UserEntity;
 import com.poscoict.rollin.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,14 +23,10 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    UserDto userDto;
 
     @Autowired
     SecurityService securityService;
 
-    @Autowired
-    UserEntity userEntity;
 
 
 

@@ -1,11 +1,8 @@
 package com.poscoict.rollin.gift.controller;
 
-import com.poscoict.rollin.gift.model.GiftDto;
 import com.poscoict.rollin.gift.model.GiftEntity;
 import com.poscoict.rollin.gift.serive.GiftService;
-import com.poscoict.rollin.paper.model.PaperDto;
 import com.poscoict.rollin.paper.model.PaperEntity;
-import com.poscoict.rollin.user.model.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,17 +19,7 @@ public class GiftController {
     @Autowired
     GiftService giftService;
 
-    @Autowired
-    GiftEntity giftEntity;
 
-    @Autowired
-    GiftDto giftDto;
-
-    @Autowired
-    PaperDto paperDto;
-
-    @Autowired
-    UserDto userDto;
 
     @GetMapping("/")
     public List<GiftEntity> getAllGift(){
@@ -68,8 +55,4 @@ public class GiftController {
         return new ResponseEntity<>(httpStatus);
     }
 
-    @GetMapping("/receiver/{id}")
-    public List<UserDto> getReceiverNotUserId(@PathVariable String id){
-        return giftService.findReceiverNotUserId(Integer.valueOf(id));
-    }
 }

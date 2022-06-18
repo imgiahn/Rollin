@@ -6,6 +6,7 @@ import { RootState } from "../../app/store";
 import { user } from "../../app/users";
 import AuthRouter from "../AuthRouter";
 import "../front/gi.css";
+import ProfileNav from "../ProfileNav";
 interface IProps {
   setIsSelect: Dispatch<SetStateAction<boolean>>;
 }
@@ -21,7 +22,8 @@ const PapersList: FunctionComponent<IProps> = (props: IProps) => {
   return (
     <>
       <AuthRouter />
-      <div className="App">
+      <ProfileNav />
+      <div className="">
         <div className="row">
           <div className="text-center">
             <h1>{me?.name}님에게 온 Rollin</h1>

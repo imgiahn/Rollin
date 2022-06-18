@@ -4,6 +4,7 @@ import Gifts from "../gifts/Gifts";
 import AddPaperForm from "./AddPaperForm";
 import AuthRouter from "../AuthRouter";
 import { useNavigate } from "react-router-dom";
+import ProfileNav from "../ProfileNav";
 
 export interface SendProps {
   setisAdd: Dispatch<SetStateAction<boolean>>;
@@ -19,6 +20,7 @@ const SendBody = () => {
   return (
     <>
       <AuthRouter />
+      <ProfileNav />
       {!isSelect || isAdd ? (
         <div className="App">
           <div id="content" className="center-block">

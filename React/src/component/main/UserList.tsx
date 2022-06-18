@@ -6,6 +6,7 @@ import { RootState } from "../../app/store";
 import AuthRouter from "../AuthRouter";
 import { userState } from "../../app/users";
 import "../front/gi.css";
+import ProfileNav from "../ProfileNav";
 const UserList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const UserList = () => {
   return (
     <>
       <AuthRouter />
+      <ProfileNav />
       <div className="App ">
         <div>
           <div className="row text-center">

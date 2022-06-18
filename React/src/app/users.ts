@@ -29,6 +29,10 @@ const userSlice = createSlice({
       console.log(action.payload);
       state.isLogin = action.payload;
     },
+    logout: (state: userState) => {
+      localStorage.removeItem("loginUser");
+      state.isLogin = false;
+    },
     load3: (state: userState, action: PayloadAction<Object>) => {
       console.log(action.payload);
     },
@@ -62,5 +66,5 @@ const userSlice = createSlice({
   },
   extraReducers: {},
 });
-export const { login, getUsers, load3, load4, load5, getUserById, load7, fistload, checkLogin } = userSlice.actions;
+export const { login, logout, getUsers, load3, load4, load5, getUserById, load7, fistload, checkLogin } = userSlice.actions;
 export default userSlice.reducer;

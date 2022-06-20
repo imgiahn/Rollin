@@ -51,8 +51,8 @@ const PaperDetail: FunctionComponent<IProps> = (props: IProps) => {
             <Modal isOpen={modalIsOpen}>
               <ModalHeader toggle={closeModal}>선물확인</ModalHeader>
               <ModalBody>
-                <Card>
-                  <CardImg className="detailGiftImg w-50 h-50" src={gift.img} alt={gift.name} />
+                <Card className="align-items-center">
+                  <CardImg className="detailGiftImg h-50 text-center" src={gift.img} alt={gift.name} />
                   <CardTitle tag="h5">{gift.name}</CardTitle>
                   <CardSubtitle className="mb-2 text-muted">{gift.content}</CardSubtitle>
                 </Card>

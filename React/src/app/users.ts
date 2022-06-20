@@ -32,6 +32,7 @@ const userSlice = createSlice({
     logout: (state: userState) => {
       localStorage.removeItem("loginUser");
       state.isLogin = false;
+      state.me = null;
     },
     load3: (state: userState, action: PayloadAction<Object>) => {
       console.log(action.payload);

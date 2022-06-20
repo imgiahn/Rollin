@@ -54,6 +54,7 @@ const paperSlice = createSlice({
     getPapersFail: (state: paperState, action: PayloadAction<Error>) => {
       state.isLoading = false;
       state.error = action.payload;
+      state.selectedUser = undefined;
     },
     requestGetGift: (state: paperState, action: PayloadAction<object>) => {
       console.log(action.payload);
